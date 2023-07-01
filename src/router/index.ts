@@ -41,6 +41,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/folder/session',
     component: () => import ('../views/AuctionSessionPage.vue')
+  },
+  {
+    path: '/folder/bale',
+    component: () => import ('../views/BalesPage.vue')
   }
 ]
 

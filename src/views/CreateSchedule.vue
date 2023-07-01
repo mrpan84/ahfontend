@@ -6,6 +6,7 @@
           <label for="created-date">Created Date:</label>
           <input type="datetime-local" id="created-date" v-model="createdDate" />
         </div>
+        </form>
   
         <div class="form-group">
           <label for="start-time">Start Time:</label>
