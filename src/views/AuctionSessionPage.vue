@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ $route.params.id }} Hi </ion-title>
+        <ion-title>Live Auction Sessions </ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -17,8 +17,7 @@
       </ion-header>
 
       <div id="container">
-        <strong class="capitalize">{{ $route.params.id }} Hello</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <accordion-my-stock></accordion-my-stock>
       </div>
     </ion-content>
   </ion-page>
@@ -26,6 +25,7 @@
 
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import AccordionMyStock from "@/components/AccordionMyStock.vue";
 </script>
 
 <style scoped>

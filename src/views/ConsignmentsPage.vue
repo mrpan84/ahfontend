@@ -15,10 +15,10 @@
           <ion-title size="large">{{ $route.params.id }} </ion-title>
         </ion-toolbar>
       </ion-header>
+      <bread-crumbs-consignments></bread-crumbs-consignments>
 
       <div id="container">
-        <strong class="capitalize">{{ $route.params.id }} Hello</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <accordion-consignments></accordion-consignments>
       </div>
     </ion-content>
   </ion-page>
@@ -26,6 +26,8 @@
 
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import AccordionConsignments from '@/components/AccordionConsignments.vue';
+import BreadCrumbsConsignments from '@/components/BreadCrumbsConsignments.vue';
 </script>
 
 <style scoped>

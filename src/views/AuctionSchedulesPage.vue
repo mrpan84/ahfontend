@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ $route.params.id }} Hi </ion-title>
+        <ion-title>Auction Schedules </ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -15,10 +15,9 @@
           <ion-title size="large">{{ $route.params.id }} </ion-title>
         </ion-toolbar>
       </ion-header>
-
+      <BreadCrumbsSchedules/>
       <div id="container">
-        <strong class="capitalize">{{ $route.params.id }} Hello</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <AccordionSchedules/>
       </div>
     </ion-content>
   </ion-page>
@@ -26,6 +25,8 @@
 
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import AccordionSchedules from '@/components/AccordionSchedules.vue';
+import BreadCrumbsSchedules from '@/components/BreadCrumbsSchedules.vue';
 </script>
 
 <style scoped>

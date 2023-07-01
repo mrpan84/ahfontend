@@ -4,7 +4,7 @@
       <ion-menu content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
-            <ion-list-header>Inbox</ion-list-header>
+            <ion-list-header>{{USERTYPE}}</ion-list-header>
             <ion-note>hi@ionicframework.com</ion-note>
 
             <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
@@ -19,7 +19,7 @@
             <ion-list-header>Labels</ion-list-header>
 
             <ion-item v-for="(label, index) in labels" lines="none" :key="index">
-              <ion-icon aria-hidden="true" slot="start" :ios="bookmarkOutline" :md="bookmarkSharp"></ion-icon>
+              <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon>
               <ion-label>{{ label }}</ion-label>
             </ion-item>
           </ion-list>
@@ -51,58 +51,79 @@ import {
   archiveSharp,
   bookmarkOutline,
   bookmarkSharp,
-  heartOutline,
-  heartSharp,
-  mailOutline,
-  mailSharp,
+  calendarOutline,
+  calendarSharp,
+  cameraOutline,
+  hammerOutline,
+  logOutOutline,
+  logOutSharp,
+  readerOutline,
+  readerSharp,
+  settingsOutline,
+  settingsSharp,
+  leafOutline,
+  leafSharp,
+  hammerSharp,
+  cameraSharp,
   paperPlaneOutline,
   paperPlaneSharp,
   trashOutline,
   trashSharp,
   warningOutline,
   warningSharp,
+  home,
+  homeOutline,
+  homeSharp,
+  bagHandleOutline,
+  bagHandleSharp,
+  timeOutline,
+  timeSharp,
 } from 'ionicons/icons';
+
+
+const USERTYPE = ref("Farmer");
+const USER = ref();
 
 const selectedIndex = ref(0);
 const appPages = [
   {
-    title: 'Inbox',
-    url: '/folder/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp,
+    title: 'Home',
+    url: '/folder/home',
+    iosIcon: home,
+    mdIcon: homeSharp,
   },
   {
-    title: 'Outbox',
-    url: '/folder/Outbox',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp,
+    title: 'Auction Schedules',
+    url: '/folder/schedules',
+    iosIcon: calendarOutline,
+    mdIcon: calendarSharp,
   },
   {
-    title: 'Favorites',
-    url: '/folder/Favorites',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp,
+    title: 'Auction Session',
+    url: '/folder/session',
+    iosIcon: hammerOutline,
+    mdIcon: hammerSharp,
   },
   {
-    title: 'Archived',
-    url: '/folder/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp,
+    title: 'Consignments',
+    url: '/folder/consignments',
+    iosIcon: leafOutline,
+    mdIcon: leafSharp,
   },
   {
-    title: 'Trash',
-    url: '/folder/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
+    title: 'My Stock',
+    url: '/folder/consignment/:id',
+    iosIcon: bagHandleOutline,
+    mdIcon: bagHandleSharp,
   },
   {
-    title: 'Spam',
-    url: '/folder/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp,
+    title: 'History',
+    url: '/folder/history',
+    iosIcon: timeOutline,
+    mdIcon: timeSharp,
   },
 ];
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+const labels = ['Signout'];
 
 const path = window.location.pathname.split('folder/')[1];
 if (path !== undefined) {
