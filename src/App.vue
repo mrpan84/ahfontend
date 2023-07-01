@@ -16,7 +16,7 @@
           </ion-list>
 
           <ion-list id="labels-list">
-            <ion-list-header>Labels</ion-list-header>
+            <ion-list-header>Quick Actions</ion-list-header>
 
             <ion-item v-for="(label, index) in labels" lines="none" :key="index">
               <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon>
@@ -81,7 +81,7 @@ import {
 } from 'ionicons/icons';
 
 
-const USERTYPE = ref("Farmer");
+const USERTYPE = ref("Auctioneer");
 const USER = ref();
 
 const selectedIndex = ref(0);
