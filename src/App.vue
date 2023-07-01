@@ -16,7 +16,7 @@
           </ion-list>
 
           <ion-list id="labels-list">
-            <ion-list-header>Quick Actions</ion-list-header>
+            <ion-list-header>Labels</ion-list-header>
 
             <ion-item v-for="(label, index) in labels" lines="none" :key="index">
               <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon>
@@ -79,58 +79,55 @@ import {
   timeOutline,
   timeSharp,
 } from 'ionicons/icons';
-
-
+import {auctioneerPages, buyerPages, farmerPages, adminPages, guestPages} from '@/JS/';
 
 const USERTYPE = ref("Farmer");
 const USER = ref();
 
 const selectedIndex = ref(0);
-const appPages = [
-  {
-    title: 'Home',
-    url: '/folder/home',
-    iosIcon: home,
-    mdIcon: homeSharp,
-  },
-  {
-    title: 'Auction Schedules',
-    url: '/folder/schedules',
-    iosIcon: calendarOutline,
-    mdIcon: calendarSharp,
-  },
-  {
-    title: 'Auction Session',
-    url: '/folder/session',
-    iosIcon: hammerOutline,
-    mdIcon: hammerSharp,
-  },
-  {
-    title: 'Consignments',
-    url: '/folder/consignments',
-    iosIcon: leafOutline,
-    mdIcon: leafSharp,
-  },
-  {
-    title: 'Bales',
-    url: '/folder/bale',
-    iosIcon: leafOutline,
-    mdIcon: leafSharp,
-  },
-  {
-    title: 'My Stock',
-    url: '/folder/consignment/:id',
-    iosIcon: bagHandleOutline,
-    mdIcon: bagHandleSharp,
-  },
-  {
-    title: 'History',
-    url: '/folder/history',
-    iosIcon: timeOutline,
-    mdIcon: timeSharp,
-  },
-];
+let appPages = [
+    {
+      title: 'Dashboard',
+      url: '/folder/Dashboard',
+      iosIcon: homeOutline,
+      mdIcon: homeSharp,
+    },
+    {
+      title: 'Categories',
+      url: '/folder/Categories',
+      iosIcon: readerOutline,
+      mdIcon: readerSharp,
+    },
+    {
+      title: 'Bids',
+      url: '/folder/Bids',
+      iosIcon: hammerOutline,
+      mdIcon: hammerSharp,
+    },
+    {
+      title: 'Settings',
+      url: '/folder/Settings',
+      iosIcon: settingsOutline,
+      mdIcon: settingsSharp,
+    },
+  ];
+
+
 const labels = ['Signout'];
+
+switch(USERTYPE.value){
+  case "Farmer" : appPages = farmerPages;
+  break;
+  case "Buyer" : appPages = buyerPages;
+  break;
+  case "Auctioneer" : appPages = auctioneerPages;
+  break;
+  case "Admin" : appPages = adminPages;
+  break;
+  default : appPages = guestPages;
+  break;
+}
+
 
 const path = window.location.pathname.split('folder/')[1];
 if (path !== undefined) {
