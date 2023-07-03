@@ -5,8 +5,10 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>{{ $route.params.id }} Hi </ion-title>
+        <bread-crumbs-consignments></bread-crumbs-consignments>
+        <add-consignment slot = "end"/>
       </ion-toolbar>
+      
     </ion-header>
 
     <ion-content :fullscreen="true">
@@ -15,7 +17,7 @@
           <ion-title size="large">{{ $route.params.id }} </ion-title>
         </ion-toolbar>
       </ion-header>
-      <bread-crumbs-consignments></bread-crumbs-consignments>
+     
 
       <div id="container">
         <accordion-consignments></accordion-consignments>
@@ -28,6 +30,7 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import AccordionConsignments from '@/components/AccordionConsignments.vue';
 import BreadCrumbsConsignments from '@/components/BreadCrumbsConsignments.vue';
+import AddConsignment from '@/components/AddConsignment.vue';
 </script>
 
 <style scoped>

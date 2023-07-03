@@ -81,7 +81,8 @@ import {
 } from 'ionicons/icons';
 
 
-const USERTYPE = ref("Auctioneer");
+
+const USERTYPE = ref("Farmer");
 const USER = ref();
 
 const selectedIndex = ref(0);
@@ -107,6 +108,12 @@ const appPages = [
   {
     title: 'Consignments',
     url: '/folder/consignments',
+    iosIcon: leafOutline,
+    mdIcon: leafSharp,
+  },
+  {
+    title: 'Bales',
+    url: '/folder/bale',
     iosIcon: leafOutline,
     mdIcon: leafSharp,
   },
