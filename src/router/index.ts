@@ -11,35 +11,43 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import ('../views/FolderPage.vue')
   },
   {
-    path: '/folder/signin/',
+    path: '/folder/signin',
+    name: 'Signin',
     component: () => import ('../views/LoginPage.vue')
   },
   {
-    path: '/folder/signup/',
+    path: '/folder/signup',
+    name: 'Signup',
     component: () => import ('../views/RegistrationPage.vue')
   },
   {
-    path: '/folder/forgotpassword/',
+    path: '/folder/forgot-password',
+    name: 'ForgotPassword',
     component: () => import ('../views/ForgotPasswordPage.vue')
   },
   {
     path: '/folder/home/',
+    name: 'Home',
     component: () => import ('../views/HomePage.vue')
   },
   {
     path: '/folder/consignments',
+    name: 'Consignments',
     component: () => import ('../views/ConsignmentsPage.vue')
   },
   {
     path: '/folder/consignment',
+    name: 'Consignment',
     component: () => import ('../views/ConsignmentPage.vue')
   },
   {
     path: '/folder/schedules',
+    name: 'Schedules',
     component: () => import ('../views/AuctionSchedulesPage.vue')
   },
   {
     path: '/folder/session',
+    name: 'Session',
     component: () => import ('../views/AuctionSessionPage.vue')
   },
   {

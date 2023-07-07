@@ -1,31 +1,15 @@
 <template>
-  <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button color="primary"></ion-menu-button>
-        </ion-buttons>
-        <ion-title> Hi </ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large"></ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <div id="container">
-        <login/>
-      </div>
-    </ion-content>
-  </ion-page>
+  <login-form></login-form>
 </template>
 
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import Login from "@/components/Login.vue";
+import LoginForm from "@/components/Login.vue";
+import { onBeforeMount } from 'vue';
+
+onBeforeMount(() => {
+  //USERTYPE.value = "Guest";
+});
 </script>
 
 <style scoped>

@@ -28,10 +28,10 @@
         ></ion-loading>
         <div class="login-links">
           <div class="create-account-link">
-            <router-link class="create-account" to="/create-account">Create Account</router-link>
+            <router-link class="create-account" to="/folder/signup">Create Account</router-link>
           </div>
           <div class="forgot-password-link">
-            <router-link class="forgot-password" to="/forgot-password">Forgot Password?</router-link>
+            <router-link class="forgot-password" to="/folder/forgot-password">Forgot Password?</router-link>
           </div>
         </div>
       </div>
@@ -44,7 +44,6 @@ import { IonButton, IonContent, IonIcon, IonInput, IonPage } from '@ionic/vue';
 import { ref, defineComponent } from 'vue';
 import { personCircleOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
 import { IonLoading } from '@ionic/vue';
-import axios from 'axios';
 
 export default defineComponent({
   name: 'LoginForm',
@@ -62,14 +61,6 @@ export default defineComponent({
     const showPassword = ref(false);
 
     const data = ref();
-
-    const loadData = async () => {
-    const response = await axios.get("http://192.168.142.195:8000/api/v1/users/users/1");
-    data.value = response.data;
-    console.log(response.data);
-    }
-
-    //loadData()
 
     const toggleShowPassword = () => {
       showPassword.value = !showPassword.value;

@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 import router from './router';
 
 import { IonicVue } from '@ionic/vue';
@@ -28,6 +28,8 @@ const app = createApp(App)
   .use(router)
   .use(DateFormat);
   
+app.config.globalProperties.$hostname = 'http://localhost:8000';
+
 router.isReady().then(() => {
   app.mount('#app');
 });

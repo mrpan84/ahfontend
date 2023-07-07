@@ -28,7 +28,7 @@
           </div>
           <ion-button expand="block" @click="register" class="register-button">Register</ion-button>
           <div class="login-link">
-            <router-link class="login" to="/login">Already have an account? Login</router-link>
+            <router-link class="login" to="/folder/signin">Already have an account? Login</router-link>
           </div>
         </div>
       </ion-content>

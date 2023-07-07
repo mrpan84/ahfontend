@@ -1,7 +1,7 @@
 <template>
   <ion-app>
     <ion-split-pane content-id="main-content">
-      <ion-menu content-id="main-content" type="overlay">
+      <ion-menu v-if="USERTYPE != 'Guest'" content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
             <ion-list-header>{{USERTYPE}}</ion-list-header>
@@ -19,8 +19,10 @@
             <ion-list-header>Labels</ion-list-header>
 
             <ion-item v-for="(label, index) in labels" lines="none" :key="index">
+              <router-link :to="{ name: 'Signin', replace: true}">
               <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon>
               <ion-label>{{ label }}</ion-label>
+            </router-link>
             </ion-item>
           </ion-list>
         </ion-content>
@@ -45,7 +47,7 @@ import {
   IonRouterOutlet,
   IonSplitPane,
 } from '@ionic/vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import {
   archiveOutline,
   archiveSharp,
@@ -80,6 +82,8 @@ import {
   timeSharp,
 } from 'ionicons/icons';
 import {auctioneerPages, buyerPages, farmerPages, adminPages, guestPages} from '@/JS/';
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const USERTYPE = ref("Farmer");
 const USER = ref();
@@ -128,6 +132,11 @@ switch(USERTYPE.value){
   break;
 }
 
+watch(USERTYPE, async (newUT) => {
+  if(newUT == 'Guest'){
+    router.push({ name: "Signin", replace: true });
+  }
+});
 
 const path = window.location.pathname.split('folder/')[1];
 if (path !== undefined) {
