@@ -5,7 +5,9 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Auction Schedules </ion-title>
+        <!--ion-title>Auction Schedules </ion-title-->
+        <BreadCrumbsSchedules></BreadCrumbsSchedules>
+        <AddAuction></AddAuction>
       </ion-toolbar>
     </ion-header>
 
@@ -15,7 +17,7 @@
           <ion-title size="large">{{ $route.params.id }} </ion-title>
         </ion-toolbar>
       </ion-header>
-      <BreadCrumbsSchedules/>
+
       <div id="container">
         <AccordionSchedules/>
       </div>
@@ -27,6 +29,7 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import AccordionSchedules from '@/components/AccordionSchedules.vue';
 import BreadCrumbsSchedules from '@/components/BreadCrumbsSchedules.vue';
+import AddAuction from '@/components/AddAuction.vue';
 </script>
 
 <style scoped>
