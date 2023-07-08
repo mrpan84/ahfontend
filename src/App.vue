@@ -85,9 +85,13 @@ import {
 } from 'ionicons/icons';
 import {auctioneerPages, buyerPages, farmerPages, adminPages, guestPages} from '@/JS/';
 import { useRouter } from "vue-router";
+import {useStore} from '@/Store/store.ts';
 const router = useRouter();
+const store = useStore();
 
-const USERTYPE = ref("Farmer");
+console.log(store.USERTYPE);
+
+const USERTYPE = ref(store.USERTYPE);
 const USER = ref();
 
 const selectedIndex = ref(0);
