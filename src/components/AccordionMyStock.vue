@@ -31,9 +31,8 @@
         const stock = ref();
 
         const loadStock = async () => {
-        const response = await axios.get("http://192.168.114.162:8000/api/v1/auction/auctionstocks/");
+        const response = await axios.get("http://127.0.0.1:8000/api/v1/auction/auctionstocks/");
         stock.value = response.data;
-        console.log(response.data);
         }
 
         loadStock()

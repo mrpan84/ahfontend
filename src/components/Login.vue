@@ -5,10 +5,10 @@
         <ion-icon :icon="personCircleOutline" class="login-icon"></ion-icon>
         <h1 class="login-title">Hi! Login Here </h1>
         <div class="input-container">
-          <ion-input placeholder="Username" v-model="username" class="input-field"></ion-input>
+          <ion-input placeholder="Username" v-model="formInfo.username" class="input-field"></ion-input>
           <ion-input
             placeholder="Password"
-            v-model="password"
+            v-model="formInfo.password"
             :type="showPassword ? 'text' : 'password'"
             class="input-field"
           ></ion-input>
@@ -17,7 +17,7 @@
             <label for="showPasswordCheckbox" class="checkbox-label">Show Password</label>
           </div>
         </div>
-        <ion-button id="open-loading" class="login-button">Login</ion-button>
+        <ion-button id="open-loading" class="login-button" v-on:click="login">Login</ion-button>
         <ion-loading
           trigger="open-loading"
           message="Please Wait..."
@@ -44,6 +44,7 @@ import { IonButton, IonContent, IonIcon, IonInput, IonPage } from '@ionic/vue';
 import { ref, defineComponent } from 'vue';
 import { personCircleOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
 import { IonLoading } from '@ionic/vue';
+import {axios} from 'axios';
 
 export default defineComponent({
   name: 'LoginForm',
@@ -66,15 +67,32 @@ export default defineComponent({
       showPassword.value = !showPassword.value;
     };
 
+    const send = async (payload) => {
+        const response = await axios.post("path", formInfo)
+            .then(response => {
+                // handle login server response
+            })
+    };
+
     const login = () => {
-      console.log('Hello: ' + username.value + " pwd: " + password.value);
+        let payload: string = "{'username':'";
+        payload += username.value;
+        payload += "', 'password':'";
+        payload += password.value;
+        payload += "'}";
+        console.log(payload);
     };
 
     const goToRegistration = () => {
       console.log();
     };
 
-    return { data, goToRegistration, login, username, password, showPassword, toggleShowPassword, personCircleOutline, eyeOutline, eyeOffOutline };
+    return { data, goToRegistration, login, username, password, showPassword, toggleShowPassword, personCircleOutline, eyeOutline, eyeOffOutline,
+        formInfo: {
+            username: '',
+            password: ''
+        }
+     };
   },
 });
 </script>

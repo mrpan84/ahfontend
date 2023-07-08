@@ -21,7 +21,7 @@
         const growers = ref();
 
         const loadGrowers = async () => {
-            const response = await axios.get("http://192.168.114.162:8000/api/v1/users/growers/");
+            const response = await axios.get("http://127.0.0.1:8000/api/v1/users/growers/");
             growers.value = response.data;
         }
 

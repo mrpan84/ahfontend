@@ -166,6 +166,12 @@ const auctioneerPages = [
       mdIcon: leafSharp,
     },
     {
+      title: 'Bales',
+      url: '/folder/bale',
+      iosIcon: leafOutline,
+      mdIcon: leafSharp,
+    },
+    {
       title: 'My Stock',
       url: '/folder/consignment/:id',
       iosIcon: bagHandleOutline,

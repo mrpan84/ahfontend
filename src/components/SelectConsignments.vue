@@ -20,7 +20,7 @@
         const consignments = ref();
 
         const loadConsignments = async () => {
-            const response = await axios.get("http://192.168.114.162:8000/api/v1/stock/consignments/");
+            const response = await axios.get("http://127.0.0.1:8000/api/v1/stock/consignments/");
             consignments.value = response.data;
         }
 

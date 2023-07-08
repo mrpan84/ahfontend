@@ -30,7 +30,7 @@
         const schedules = ref();
 
         const loadSchedules = async () => {
-        const response = await axios.get("http://192.168.114.162:8000/api/v1/auction/");
+        const response = await axios.get("http://127.0.0.1:8000/api/v1/auction/");
         schedules.value = response.data;
         }
 

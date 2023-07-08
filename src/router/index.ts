@@ -52,6 +52,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/folder/bale',
+    name: 'Bale',
     component: () => import ('../views/BalesPage.vue')
   }
 ]
