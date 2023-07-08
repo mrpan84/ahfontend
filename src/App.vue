@@ -19,10 +19,10 @@
             <ion-list-header>Labels</ion-list-header>
 
             <ion-item v-for="(label, index) in labels" lines="none" :key="index">
-              <router-link :to="{ name: 'Signin', replace: true}">
-              <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon>
-              <ion-label>{{ label }}</ion-label>
-            </router-link>
+                <router-link :to="{ name: 'Signin', replace: true}">
+                  <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon>
+                  <ion-label>{{ label }}</ion-label>
+                </router-link>
             </ion-item>
           </ion-list>
         </ion-content>
@@ -80,6 +80,8 @@ import {
   bagHandleSharp,
   timeOutline,
   timeSharp,
+  giftOutline,
+  giftSharp,
 } from 'ionicons/icons';
 import {auctioneerPages, buyerPages, farmerPages, adminPages, guestPages} from '@/JS/';
 import { useRouter } from "vue-router";

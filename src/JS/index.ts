@@ -57,6 +57,8 @@ import {
     bagHandleSharp,
     timeOutline,
     timeSharp,
+      giftOutline,
+      giftSharp,
   } from 'ionicons/icons';
 const auctioneerPages = [
     {
@@ -168,8 +170,8 @@ const auctioneerPages = [
     {
       title: 'Bales',
       url: '/folder/bale',
-      iosIcon: leafOutline,
-      mdIcon: leafSharp,
+      iosIcon: giftOutline,
+      mdIcon: giftSharp,
     },
     {
       title: 'My Stock',
