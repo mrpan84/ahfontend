@@ -99,6 +99,14 @@
       openModal() {
         this.isModalOpen = true;
       },
+      cancel() {
+        this.isModalOpen = false;
+      },
+      confirm() {
+        const name = this.quality;
+        this.isModalOpen = false;
+        // Emit the confirm event or perform any necessary actions
+      },
       saveAuction() {
         console.log('Auction saved!');
       },
