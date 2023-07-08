@@ -7,7 +7,7 @@
         </ion-buttons>
         <!--ion-title>Auction Schedules </ion-title-->
         <BreadCrumbsSchedules></BreadCrumbsSchedules>
-        <AddAuction></AddAuction>
+        <AddAuction v-if="USERTYPE == 'Auctioneer'"></AddAuction>
       </ion-toolbar>
     </ion-header>
 
