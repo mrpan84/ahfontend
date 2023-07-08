@@ -22,10 +22,14 @@ import '@ionic/vue/css/display.css';
 import DateFormat from '@voidsolutions/vue-dateformat';
 /* Theme variables */
 import './theme/variables.css';
+import {createPinia} from 'pinia';
+
+const pinia = createPinia()
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
+  .use(pinia)
   .use(DateFormat);
   
 app.config.globalProperties.$hostname = 'http://localhost:8000';
