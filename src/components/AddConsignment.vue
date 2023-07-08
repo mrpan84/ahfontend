@@ -11,11 +11,11 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button @click="cancel()" color="danger">Cancel</ion-button>
+            <ion-button @click="cancel" color="danger">Cancel</ion-button>
           </ion-buttons>
           <ion-title>New Consignment Form</ion-title>
           <ion-buttons slot="end">
-            <ion-button :strong="true" @click="confirm()" color="success">Confirm</ion-button>
+            <ion-button :strong="true" @click="confirm" color="success">Confirm</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -29,22 +29,22 @@
 
             <div class="form-group">
               <label for="consignment-date">Consignment Date:</label>
-              <input type="date" id="consignment-date" v-model="consignmentDate" class="form-input" />
+              <ion-input type="date" id="consignment-date" v-model="consignmentDate" class="form-input"></ion-input>
             </div>
 
             <div class="form-group">
               <label for="quality">Quality:</label>
-              <input type="text" id="quality" v-model="quality" class="form-input" />
+              <ion-input type="text" id="quality" v-model="quality" class="form-input"></ion-input>
             </div>
 
             <div class="form-group">
               <label for="attempts">Attempts:</label>
-              <input type="number" id="attempts" v-model="attempts" class="form-input" />
+              <ion-input type="number" id="attempts" v-model="attempts" class="form-input"></ion-input>
             </div>
 
             <div class="button-group">
-              <button class="btn-save" @click="saveForm">Save</button>
-              <button class="btn-cancel" @click="cancelForm">Cancel</button>
+              <ion-button class="btn-save" @click="saveForm">Save</ion-button>
+              <ion-button class="btn-cancel" @click="cancelForm">Cancel</ion-button>
             </div>
           </form>
         </div>
@@ -54,22 +54,8 @@
 </template>
 
 <script lang="ts">
-  import {
-    IonButton,
-    IonModal,
-    IonHeader,
-    IonContent,
-    IonToolbar,
-    IonTitle,
-    IonButtons,
-   
-    IonItem,
-    IonInput,
-    IonLabel,
-  } from '@ionic/vue';
-  import { OverlayEventDetail } from '@ionic/core/components';
-  import { defineComponent, ref } from 'vue';
-  import axios from 'axios';
+  import { IonButton, IonModal, IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonInput } from '@ionic/vue';
+  import { defineComponent } from 'vue';
   import SelectGrower from './SelectGrower.vue';
 
   export default defineComponent({
@@ -81,10 +67,7 @@
       IonToolbar,
       IonTitle,
       IonButtons,
-      
-      IonItem,
       IonInput,
-      IonLabel,
       SelectGrower,
     },
     data() {
