@@ -29,22 +29,27 @@
   
               <div class="form-group">
                 <label for="created-date">Created Date:</label>
-                <input type="datetime-local" id="created-date" v-model="createdDate" class="form-input" />
+                <input type="datetime-local" id="created-date" v-model="formInfo.createdDate" class="form-input" />
               </div>
   
               <div class="form-group">
                 <label for="start-time">Start Time:</label>
-                <input type="datetime-local" id="start-time" v-model="startTime" class="form-input" />
+                <input type="datetime-local" id="start-time" v-model="formInfo.startTime" class="form-input" />
               </div>
   
               <div class="form-group">
                 <label for="end-time">End Time:</label>
-                <input type="datetime-local" id="end-time" v-model="endTime" class="form-input" />
+                <input type="datetime-local" id="start-time" v-model="formInfo.endTime" class="form-input" />
               </div>
   
               <div class="form-group">
-                <label for="venue">Venue:</label>
-                <input type="text" id="venue" v-model="venue" class="form-input" />
+                <!--label for="venue">Venue:</label-->
+                <ion-select label="Venue" label-placement="Venue" v-model="formInfo.venue" >
+                                        <ion-select-option value="Limbe">Limbe</ion-select-option>
+                                        <ion-select-option value="Kanengo">Kanengo</ion-select-option>
+                                        <ion-select-option value="Chinkhoma">Chinkhoma</ion-select-option>
+                                        <ion-select-option value="Mzuzu">Mzuzu</ion-select-option>
+                                      </ion-select>
               </div>
   
               <div class="button-group">
@@ -69,9 +74,10 @@
     IonButtons,
     IonItem,
     IonInput,
-    IonLabel,
+    IonLabel,  IonSelect, IonSelectOption
   } from '@ionic/vue';
   import { defineComponent } from 'vue';
+  import axios from 'axios';
   
   export default defineComponent({
     components: {
@@ -85,6 +91,8 @@
       IonItem,
       IonInput,
       IonLabel,
+      IonSelect,
+      IonSelectOption,
     },
     data() {
       return {
@@ -92,7 +100,8 @@
         createdDate: '',
         startTime: '',
         endTime: '',
-        venue: ''
+        venue: '',
+        formInfo: {createdDate: null,startTime: null, endTime: null, venue: null}
       };
     },
     methods: {
@@ -108,7 +117,17 @@
         // Emit the confirm event or perform any necessary actions
       },
       saveAuction() {
-        console.log('Auction saved!');
+        const url = "http://127.0.0.1:8000/api/v1/auction/createauction/";
+        console.log(this.formInfo.createdDate)
+        const payload = {
+                          "created_date": this.formInfo.createdDate,
+                          "start_time": this.formInfo.startTime,
+                          "end_time": this.formInfo.endTime,
+                          "venue": this.formInfo.venue
+                      };
+        console.log(payload)
+        const response = axios.post(url, payload)
+            .then((response) => console.log(response))
       },
       cancelAuction() {
         console.log('Oops! Auction cancelled!');

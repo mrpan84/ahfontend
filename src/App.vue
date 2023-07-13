@@ -20,7 +20,7 @@
 
             <ion-item v-for="(label, index) in labels" lines="none" :key="index">
                 <router-link :to="{ name: 'Signin', replace: true}">
-                  <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon>
+                  <!--ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon-->
                   <ion-label>{{ label }}</ion-label>
                 </router-link>
             </ion-item>

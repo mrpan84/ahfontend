@@ -6,12 +6,8 @@
         <h1 class="login-title">Hi! Login Here </h1>
         <div class="input-container">
           <ion-input placeholder="Username" v-model="formInfo.username" class="input-field"></ion-input>
-          <ion-input
-            placeholder="Password"
-            v-model="formInfo.password"
-            :type="showPassword ? 'text' : 'password'"
-            class="input-field"
-          ></ion-input>
+          <ion-input placeholder="Password" v-model="formInfo.password"
+            :type="showPassword ? 'text' : 'password'" class="input-field" ></ion-input>
           <div class="show-password-checkbox">
             <input type="checkbox" id="showPasswordCheckbox" v-model="showPassword" class="checkbox-input">
             <label for="showPasswordCheckbox" class="checkbox-label">Show Password</label>
@@ -44,7 +40,7 @@ import { IonButton, IonContent, IonIcon, IonInput, IonPage } from '@ionic/vue';
 import { ref, defineComponent } from 'vue';
 import { personCircleOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
 import { IonLoading } from '@ionic/vue';
-import {axios} from 'axios';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'LoginForm',
@@ -60,6 +56,7 @@ export default defineComponent({
     const username = ref('');
     const password = ref('');
     const showPassword = ref(false);
+    const formInfo =ref({username: '', password: ''})
 
     const data = ref();
 
@@ -68,19 +65,16 @@ export default defineComponent({
     };
 
     const send = async (payload) => {
-        const response = await axios.post("path", formInfo)
-            .then(response => {
-                // handle login server response
-            })
+        const url = "http://127.0.0.1:8000/api/v1/users/login/";
+        console.log(url);
+        const response = await axios.post(url, payload)
+                             .then((response) => console.log(response))
+        //consignments.value = response.data;
     };
 
     const login = () => {
-        let payload: string = "{'username':'";
-        payload += username.value;
-        payload += "', 'password':'";
-        payload += password.value;
-        payload += "'}";
-        console.log(payload);
+        let payload = JSON.stringify(formInfo.value);
+        send(payload);
     };
 
     const goToRegistration = () => {
@@ -88,10 +82,7 @@ export default defineComponent({
     };
 
     return { data, goToRegistration, login, username, password, showPassword, toggleShowPassword, personCircleOutline, eyeOutline, eyeOffOutline,
-        formInfo: {
-            username: '',
-            password: ''
-        }
+        formInfo
      };
   },
 });

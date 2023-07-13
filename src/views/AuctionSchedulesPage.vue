@@ -7,7 +7,7 @@
         </ion-buttons>
         <!--ion-title>Auction Schedules </ion-title-->
         <BreadCrumbsSchedules></BreadCrumbsSchedules>
-        <AddAuction v-if="USERTYPE == 'Auctioneer'"></AddAuction>
+        <AddAuction v-if="store.USERTYPE == 'Auctioneer'"></AddAuction>
       </ion-toolbar>
     </ion-header>
 
@@ -30,6 +30,8 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import AccordionSchedules from '@/components/AccordionSchedules.vue';
 import BreadCrumbsSchedules from '@/components/BreadCrumbsSchedules.vue';
 import AddAuction from '@/components/AddAuction.vue';
+import {useStore} from '@/Store/store.ts';
+const store = useStore();
 </script>
 
 <style scoped>
