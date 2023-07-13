@@ -7,7 +7,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-modal :is-open="isModalOpen" @closed="onModalClosed">
+    <ion-modal :is-open="isModalOpen" @ionModalDidDismiss="closeModal">
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
@@ -54,53 +54,53 @@
 </template>
 
 <script lang="ts">
-  import { IonButton, IonModal, IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonInput } from '@ionic/vue';
-  import { defineComponent } from 'vue';
-  import SelectGrower from './SelectGrower.vue';
+import { IonButton, IonModal, IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonInput } from '@ionic/vue';
+import { defineComponent } from 'vue';
+import SelectGrower from './SelectGrower.vue';
 
-  export default defineComponent({
-    components: {
-      IonButton,
-      IonModal,
-      IonHeader,
-      IonContent,
-      IonToolbar,
-      IonTitle,
-      IonButtons,
-      IonInput,
-      SelectGrower,
+export default defineComponent({
+  components: {
+    IonButton,
+    IonModal,
+    IonHeader,
+    IonContent,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonInput,
+    SelectGrower,
+  },
+  data() {
+    return {
+      isModalOpen: false,
+      consignmentDate: '',
+      quality: '',
+      attempts: 0,
+    };
+  },
+  methods: {
+    openModal() {
+      this.isModalOpen = true;
     },
-    data() {
-      return {
-        isModalOpen: false,
-        consignmentDate: '',
-        quality: '',
-        attempts: 0,
-      };
+    cancel() {
+      this.isModalOpen = false;
     },
-    methods: {
-      openModal() {
-        this.isModalOpen = true;
-      },
-      cancel() {
-        this.isModalOpen = false;
-      },
-      confirm() {
-        const name = this.quality;
-        this.isModalOpen = false;
-        // Emit the confirm event or perform any necessary actions
-      },
-      saveForm() {
-        // Save form logic
-      },
-      cancelForm() {
-        // Cancel form logic
-      },
-      onModalClosed() {
-        // Handle modal closed event
-      },
+    confirm() {
+      const name = this.quality;
+      this.isModalOpen = false;
+      // Emit the confirm event or perform any necessary actions
     },
-  });
+    saveForm() {
+      // Save form logic
+    },
+    cancelForm() {
+      // Cancel form logic
+    },
+    closeModal() {
+      // Handle modal closed event
+    },
+  },
+});
 </script>
 
 <style scoped>

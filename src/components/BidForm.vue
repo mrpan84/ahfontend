@@ -1,0 +1,173 @@
+<template>
+  <div class="main-container">
+    <button class="open-modal-btn" @click="openModal">Place Bid</button>
+    <div class="modal-overlay" :class="{ 'open': modalOpen }">
+      <div class="bids-modal">
+        <h2>Bids Form</h2>
+        <form>
+          <div class="form-group">
+            <label for="buyer-id">Buyer ID:</label>
+            <input type="text" id="buyer-id" v-model="buyerId" class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="auction-stock-id">Auction Stock ID:</label>
+            <input type="text" id="auction-stock-id" v-model="auctionStockId" class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" v-model="amount" class="form-input" />
+          </div>
+
+          <div class="button-group">
+            <button class="btn-bid" @click="placeBid">Bid</button>
+            <button class="btn-cancel" @click="cancelModal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const modalOpen = ref(false);
+    const buyerId = ref('');
+    const auctionStockId = ref('');
+    const amount = ref(null);
+
+    const openModal = () => {
+      modalOpen.value = true;
+    };
+
+    const closeModal = () => {
+      modalOpen.value = false;
+      // Clear form fields
+      buyerId.value = '';
+      auctionStockId.value = '';
+      amount.value = null;
+    };
+
+    const placeBid = () => {
+      // TODO: Handle form submission logic
+      console.log('Bid placed!');
+    };
+
+    const cancelModal = () => {
+      closeModal();
+    };
+
+    return {
+      modalOpen,
+      buyerId,
+      auctionStockId,
+      amount,
+      openModal,
+      closeModal,
+      placeBid,
+      cancelModal
+    };
+  }
+};
+</script>
+
+<style scoped>
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.open-modal-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.bids-modal {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-bid {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-bid:hover {
+  background-color: #45a049;
+}
+
+.btn-cancel {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #e53935;
+}
+</style>

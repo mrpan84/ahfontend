@@ -1,63 +1,90 @@
 <template>
   <div class="main-container">
-    <div class="add-bales-form-container">
-      <h2>Add Bales</h2>
-      <form>
+    <button class="open-modal-btn" @click="openModal">Add Bales</button>
+    <ion-modal :is-open="modalOpen" @ionModalDidDismiss="closeModal" id="ion-modal">
+      <div class="add-bales-form-container">
+        <h2>Add Bales</h2>
+        <form>
+          <div class="form-group">
+            <SelectConsignments />
+          </div>
 
-        <div class="form-group">
-          <SelectConsignments/>
-        </div>
+          <div class="form-group">
+            <label for="registration-number">Registration Number:</label>
+            <input type="text" id="registration-number" v-model="registrationNumber" class="form-input" />
+          </div>
 
-        <div class="form-group">
-          <label for="registration-number">Registration Number:</label>
-          <input type="text" id="registration-number" v-model="registrationNumber" class="form-input" />
-        </div>
+          <div class="form-group">
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" v-model="weight" class="form-input" />
+          </div>
 
-        <div class="form-group">
-          <label for="weight">Weight:</label>
-          <input type="number" id="weight" v-model="weight" class="form-input" />
-        </div>
+          <div class="form-group">
+            <div class="checkbox-container">
+              <label for="return-to-grower">Return to Grower:</label>
+              <input type="checkbox" id="return-to-grower" v-model="returnToGrower" class="form-checkbox" />
+            </div>
+          </div>
 
-        <div class="form-group">
-  <div class="checkbox-container">
-    <label for="return-to-grower">Return to Grower:</label>
-    <input type="checkbox" id="return-to-grower" v-model="returnToGrower" class="form-checkbox" />
-  </div>
-</div>
-
-
-        <div class="button-group">
-          <button class="btn-save" @click="saveBales">Save</button>
-          <button class="btn-cancel" @click="cancelBales">Cancel</button>
-        </div>
-      </form>
-    </div>
+          <div class="button-group">
+            <ion-button class="btn-save" @click="saveBales">Save</ion-button>
+            <ion-button class="btn-cancel" @click="cancelModal">Cancel</ion-button>
+          </div>
+        </form>
+      </div>
+    </ion-modal>
   </div>
 </template>
 
-<script lang="ts">
-import { IonSelect, IonSelectOption } from '@ionic/vue';
+<script>
+import { IonButton, IonModal } from '@ionic/vue';
+import { ref } from 'vue';
 import SelectConsignments from '@/components/SelectConsignments.vue';
 
 export default {
-  data() {
-    return {
-      registrationNumber: '',
-      weight: null,
-      returnToGrower: false,
-    };
-  },
-  methods: {
-    saveBales() {
-      console.log('Bales saved!');
-    },
-    cancelBales() {
-      console.log('Bales cancelled!');
-    },
-  },
   components: {
-    SelectConsignments,
+    IonButton,
+    IonModal,
+    SelectConsignments
   },
+  setup() {
+    const modalOpen = ref(false);
+    const registrationNumber = ref('');
+    const weight = ref(null);
+    const returnToGrower = ref(false);
+
+    const openModal = () => {
+      modalOpen.value = true;
+    };
+
+    const closeModal = () => {
+      modalOpen.value = false;
+      // Clear form fields
+      registrationNumber.value = '';
+      weight.value = null;
+      returnToGrower.value = false;
+    };
+
+    const saveBales = () => {
+      // TODO: Handle form submission logic
+      console.log('Bales saved!');
+    };
+
+    const cancelModal = () => {
+      closeModal();
+    };
+
+    return {
+      modalOpen,
+      registrationNumber,
+      weight,
+      returnToGrower,
+      openModal,
+      closeModal,
+      saveBales,
+      cancelModal
+    };
+  }
 };
 </script>
 
@@ -67,6 +94,13 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.open-modal-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .add-bales-form-container {
@@ -118,27 +152,32 @@ button {
 }
 
 .btn-save {
-  background-color: #4caf50;
-  color: white;
-  border: none;
+  --background: #4caf50;
+  --color: white;
+  --border-radius: 5px;
+  --padding-start: 20px;
+  --padding-end: 20px;
   margin-right: 10px;
   transition: background-color 0.3s ease;
 }
 
 .btn-save:hover {
-  background-color: #45a049;
+  --background: #45a049;
 }
 
 .btn-cancel {
-  background-color: #f44336;
-  color: white;
-  border: none;
+  --background: #f44336;
+  --color: white;
+  --border-radius: 5px;
+  --padding-start: 20px;
+  --padding-end: 20px;
   transition: background-color 0.3s ease;
 }
 
 .btn-cancel:hover {
-  background-color: #e53935;
+  --background: #e53935;
 }
+
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -148,5 +187,4 @@ button {
   margin-right: 10px;
   margin-top: 10px;
 }
-
 </style>
