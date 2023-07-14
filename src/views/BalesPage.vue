@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <button class="open-modal-btn" @click="openModal">Add Bales</button>
-    <ion-modal :is-open="modalOpen" @ionModalDidDismiss="closeModal" id="ion-modal">
+    <div class="modal-overlay" :class="{ 'open': modalOpen }">
       <div class="add-bales-form-container">
         <h2>Add Bales</h2>
         <form>
@@ -27,24 +27,21 @@
           </div>
 
           <div class="button-group">
-            <ion-button class="btn-save" @click="saveBales">Save</ion-button>
-            <ion-button class="btn-cancel" @click="cancelModal">Cancel</ion-button>
+            <button class="btn-save" @click="saveBales">Save</button>
+            <button class="btn-cancel" @click="cancelModal">Cancel</button>
           </div>
         </form>
       </div>
-    </ion-modal>
+    </div>
   </div>
 </template>
 
 <script>
-import { IonButton, IonModal } from '@ionic/vue';
 import { ref } from 'vue';
 import SelectConsignments from '@/components/SelectConsignments.vue';
 
 export default {
   components: {
-    IonButton,
-    IonModal,
     SelectConsignments
   },
   setup() {
@@ -103,9 +100,25 @@ export default {
   cursor: pointer;
 }
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
 .add-bales-form-container {
   max-width: 400px;
-  margin: 40px auto;
   padding: 20px;
   background-color: #f4f4f4;
   border-radius: 10px;
@@ -152,30 +165,26 @@ button {
 }
 
 .btn-save {
-  --background: #4caf50;
-  --color: white;
-  --border-radius: 5px;
-  --padding-start: 20px;
-  --padding-end: 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
   margin-right: 10px;
   transition: background-color 0.3s ease;
 }
 
 .btn-save:hover {
-  --background: #45a049;
+  background-color: #45a049;
 }
 
 .btn-cancel {
-  --background: #f44336;
-  --color: white;
-  --border-radius: 5px;
-  --padding-start: 20px;
-  --padding-end: 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
   transition: background-color 0.3s ease;
 }
 
 .btn-cancel:hover {
-  --background: #e53935;
+  background-color: #e53935;
 }
 
 .checkbox-container {
