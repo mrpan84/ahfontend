@@ -97,10 +97,6 @@
     data() {
       return {
         isModalOpen: false,
-        createdDate: '',
-        startTime: '',
-        endTime: '',
-        venue: '',
         formInfo: {createdDate: null,startTime: null, endTime: null, venue: null}
       };
     },
@@ -118,14 +114,12 @@
       },
       saveAuction() {
         const url = "http://127.0.0.1:8000/api/v1/auction/createauction/";
-        console.log(this.formInfo.createdDate)
         const payload = {
-                          "created_date": this.formInfo.createdDate,
-                          "start_time": this.formInfo.startTime,
-                          "end_time": this.formInfo.endTime,
-                          "venue": this.formInfo.venue
-                      };
-        console.log(payload)
+              "created_date": this.formInfo.createdDate,
+              "start_time": this.formInfo.startTime,
+              "end_time": this.formInfo.endTime,
+              "venue": this.formInfo.venue
+          };
         const response = axios.post(url, payload)
             .then((response) => console.log(response))
       },
