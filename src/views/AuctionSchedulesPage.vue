@@ -30,8 +30,7 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import AccordionSchedules from '@/components/AccordionSchedules.vue';
 import BreadCrumbsSchedules from '@/components/BreadCrumbsSchedules.vue';
 import AddAuction from '@/components/AddAuction.vue';
-import useStore from '@/Store/store.ts';
-
+import {useStore} from '@/Store/store.ts';
 const store = useStore();
 </script>
 
