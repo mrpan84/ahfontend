@@ -1,48 +1,15 @@
 <template>
-  <!--ion-content>
+  <ion-content>
     <div class="main-container">
-      <button class="open-modal-btn" @click="openModal">Add Bales</button>
-      <div class="modal-overlay" :class="{ 'open': isModalOpen }">
-        <div class="add-bales-form-container">
-          <h2>Add Bales</h2>
-          <form>
-            <div class="form-group">
-             
-            </div>
-
-            <div class="form-group">
-              <label for="registration-number">Registration Number:</label>
-              <input type="text" id="registration-number" v-model="registrationNumber" class="form-input" />
-            </div>
-
-            <div class="form-group">
-              <label for="weight">Weight:</label>
-              <input type="number" id="weight" v-model="weight" class="form-input" />
-            </div>
-
-            <div class="form-group">
-              <div class="checkbox-container">
-                <label for="return-to-grower">Return to Grower:</label>
-                <input type="checkbox" id="return-to-grower" v-model="returnToGrower" class="form-checkbox" />
-              </div>
-            </div>
-
-            <div class="button-group">
-              <button class="btn-save" @click="saveBales">Save</button>
-              <button class="btn-cancel" @click="cancelBales">Cancel</button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <Camera></Camera>
     </div>
-  </ion-content-->
-  <Camera></Camera>
+  </ion-content>
 </template>
 
 <script lang="ts">
 import { IonContent, IonModal } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import Camera from '@/components/Camera.vue';
+import Camera from '@/components/MyCamera.vue';
 
 export default defineComponent({
   components: {
