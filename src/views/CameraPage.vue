@@ -1,5 +1,5 @@
 <template>
-  <ion-content>
+  <!--ion-content>
     <div class="main-container">
       <button class="open-modal-btn" @click="openModal">Add Bales</button>
       <div class="modal-overlay" :class="{ 'open': isModalOpen }">
@@ -7,7 +7,7 @@
           <h2>Add Bales</h2>
           <form>
             <div class="form-group">
-              <SelectConsignments/>
+             
             </div>
 
             <div class="form-group">
@@ -35,19 +35,20 @@
         </div>
       </div>
     </div>
-  </ion-content>
+  </ion-content-->
+  <Camera></Camera>
 </template>
 
 <script lang="ts">
 import { IonContent, IonModal } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import SelectConsignments from '@/components/SelectConsignments.vue';
+import Camera from '@/components/Camera.vue';
 
 export default defineComponent({
   components: {
     IonContent,
     IonModal,
-    SelectConsignments,
+    Camera,
   },
   data() {
     return {

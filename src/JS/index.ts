@@ -80,6 +80,12 @@ const auctioneerPages = [
       mdIcon: readerSharp,
     },
     {
+      title: 'Grower Clubs',
+      url: '/folder/growerclubs',
+      iosIcon: cameraOutline,
+      mdIcon: cameraSharp,
+    }, 
+    {
       title: 'Camera',
       url: '/folder/camera',
       iosIcon: cameraOutline,

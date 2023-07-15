@@ -1,10 +1,10 @@
 <template>
   <ion-app>
     <ion-split-pane content-id="main-content">
-      <ion-menu v-if="USERTYPE != 'Guest'" content-id="main-content" type="overlay">
+      <ion-menu v-if="USERTYPE !== 'Guest'" content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
-            <ion-list-header>{{USERTYPE}}</ion-list-header>
+            <ion-list-header>{{ USERTYPE }}</ion-list-header>
             <ion-note>hi@ionicframework.com</ion-note>
 
             <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
@@ -19,10 +19,12 @@
             <ion-list-header>Labels</ion-list-header>
 
             <ion-item v-for="(label, index) in labels" lines="none" :key="index">
-                <router-link :to="{ name: 'Signin', replace: true}">
-                  <!--ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutSharp"></ion-icon-->
-                  <ion-label>{{ label }}</ion-label>
-                </router-link>
+              <router-link :to="{ name: 'Signin', replace: true}">
+                <div class="label-wrapper">
+                  <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutOutline"></ion-icon>
+              <ion-label>{{ label }}</ion-label>
+                </div>
+              </router-link>
             </ion-item>
           </ion-list>
         </ion-content>
@@ -83,9 +85,10 @@ import {
   giftOutline,
   giftSharp,
 } from 'ionicons/icons';
-import {auctioneerPages, buyerPages, farmerPages, adminPages, guestPages} from '@/JS/';
-import { useRouter } from "vue-router";
-import {useStore} from '@/Store/store.ts';
+import { auctioneerPages, buyerPages, farmerPages, adminPages, guestPages } from '@/JS/';
+import { useRouter } from 'vue-router';
+import { useStore } from '@/Store/store.ts';
+
 const router = useRouter();
 const store = useStore();
 
@@ -96,51 +99,55 @@ const USER = ref();
 
 const selectedIndex = ref(0);
 let appPages = [
-    {
-      title: 'Dashboard',
-      url: '/folder/Dashboard',
-      iosIcon: homeOutline,
-      mdIcon: homeSharp,
-    },
-    {
-      title: 'Categories',
-      url: '/folder/Categories',
-      iosIcon: readerOutline,
-      mdIcon: readerSharp,
-    },
-    {
-      title: 'Bids',
-      url: '/folder/Bids',
-      iosIcon: hammerOutline,
-      mdIcon: hammerSharp,
-    },
-    {
-      title: 'Settings',
-      url: '/folder/Settings',
-      iosIcon: settingsOutline,
-      mdIcon: settingsSharp,
-    },
-  ];
-
+  {
+    title: 'Dashboard',
+    url: '/folder/Dashboard',
+    iosIcon: homeOutline,
+    mdIcon: homeSharp,
+  },
+  {
+    title: 'Categories',
+    url: '/folder/Categories',
+    iosIcon: readerOutline,
+    mdIcon: readerSharp,
+  },
+  {
+    title: 'Bids',
+    url: '/folder/Bids',
+    iosIcon: hammerOutline,
+    mdIcon: hammerSharp,
+  },
+  {
+    title: 'Settings',
+    url: '/folder/Settings',
+    iosIcon: settingsOutline,
+    mdIcon: settingsSharp,
+  },
+];
 
 const labels = ['Signout'];
 
-switch(USERTYPE.value){
-  case "Farmer" : appPages = farmerPages;
-  break;
-  case "Buyer" : appPages = buyerPages;
-  break;
-  case "Auctioneer" : appPages = auctioneerPages;
-  break;
-  case "Admin" : appPages = adminPages;
-  break;
-  default : appPages = guestPages;
-  break;
+switch (USERTYPE.value) {
+  case 'Farmer':
+    appPages = farmerPages;
+    break;
+  case 'Buyer':
+    appPages = buyerPages;
+    break;
+  case 'Auctioneer':
+    appPages = auctioneerPages;
+    break;
+  case 'Admin':
+    appPages = adminPages;
+    break;
+  default:
+    appPages = guestPages;
+    break;
 }
 
 watch(USERTYPE, async (newUT) => {
-  if(newUT == 'Guest'){
-    router.push({ name: "Signin", replace: true });
+  if (newUT === 'Guest') {
+    router.push({ name: 'Signin', replace: true });
   }
 });
 
@@ -150,7 +157,7 @@ if (path !== undefined) {
 }
 </script>
 
-<style scoped>
+`<style scoped>
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
@@ -270,4 +277,10 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+.label-wrapper {
+  display: flex;
+  align-items: center;
+}
 </style>
+`
