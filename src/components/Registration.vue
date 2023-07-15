@@ -39,6 +39,7 @@
   import { IonButton, IonContent, IonIcon, IonInput, IonPage } from '@ionic/vue';
   import { ref, defineComponent } from 'vue';
   import { personAddOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
+  import {useStore} from '@/Store/store.ts';
   
   export default defineComponent({
     name: 'RegistrationForm',
@@ -50,6 +51,7 @@
       IonPage,
     },
     setup() {
+      const store = useStore();
       const fullName = ref('');
       const email = ref('');
       const password = ref('');

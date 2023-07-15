@@ -18,6 +18,7 @@
     import { caretDownCircle } from 'ionicons/icons';
     import { defineComponent, ref } from 'vue';
     import axios, { Axios } from 'axios';
+    import {useStore} from '@/Store/store.ts';
   
     export default defineComponent({
       components: {
@@ -28,10 +29,11 @@
         IonBadge,
       },
       setup() {
+        const store = useStore();
         const stock = ref();
 
         const loadStock = async () => {
-        const response = await axios.get("http://127.0.0.1:8000/api/v1/auction/auctionstocks/");
+        const response = await axios.get(store.BASE_URL + "auction/auctionstocks/");
         stock.value = response.data;
         }
 

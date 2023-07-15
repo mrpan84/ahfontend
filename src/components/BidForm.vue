@@ -32,9 +32,11 @@
 
 <script>
 import { ref } from 'vue';
+import {useStore} from '@/Store/store.ts';
 
 export default {
   setup() {
+    const store = useStore();
     const modalOpen = ref(false);
     const buyerId = ref('');
     const auctionStockId = ref('');

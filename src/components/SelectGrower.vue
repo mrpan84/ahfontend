@@ -14,15 +14,17 @@
     import { IonItem, IonList, IonSelect, IonSelectOption, IonText } from '@ionic/vue';
     import { defineComponent, ref } from 'vue';
     import axios from 'axios';
+    import useStore from '@/Store/store.ts'
   
     export default defineComponent({
       components: { IonItem, IonList, IonSelect, IonSelectOption, IonText },
       setup(){
+        const store = useStore();
         const growers = ref();
-
         const loadGrowers = async () => {
-            const response = await axios.get("http://127.0.0.1:8000/api/v1/users/growers/");
+            const response = await axios.get(store.BASE_URL + "users/growers/");
             growers.value = response.data;
+            store.setGrowers(response.data);
         }
 
         loadGrowers();

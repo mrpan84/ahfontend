@@ -40,6 +40,7 @@ import { IonButton, IonContent, IonIcon, IonInput, IonPage } from '@ionic/vue';
 import { ref, defineComponent } from 'vue';
 import { personCircleOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
 import { IonLoading } from '@ionic/vue';
+import useStore from '@/Store/store.ts'
 import axios from 'axios';
 
 export default defineComponent({
@@ -53,6 +54,7 @@ export default defineComponent({
     IonLoading,
   },
   setup() {
+    const store = useStore();
     const username = ref('');
     const password = ref('');
     const showPassword = ref(false);
@@ -65,16 +67,21 @@ export default defineComponent({
     };
 
     const send = async (payload) => {
-        const url = "http://127.0.0.1:8000/api/v1/users/login/";
+        const url = store.BASE_URL + "users/login/";
         console.log(url);
         const response = await axios.post(url, payload)
-                             .then((response) => console.log(response))
-        //consignments.value = response.data;
+             .then((response) => console.log(response))
+        return response.data;
     };
 
     const login = () => {
         let payload = JSON.stringify(formInfo.value);
-        send(payload);
+        const user = send(payload);
+        if(true){
+            store.USERTYPE = user.data.utype;
+        } else {
+
+        }
     };
 
     const goToRegistration = () => {

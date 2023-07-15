@@ -16,6 +16,15 @@
             <form>
               <div class="form-group">
                 <SelectGrower />
+                    <ion-list>
+                      <ion-item>
+                        <ion-select>
+                            <div slot="label">Grower <ion-text color="danger">(Required)</ion-text></div>
+                            <ion-select-option v-for="grower in growers" :value="grower.grower_id">
+                                {{growers.district}} {{ grower.club_name }}</ion-select-option>
+                       </ion-select>
+                      </ion-item>
+                    </ion-list>
               </div>
 
               <div class="form-group">
@@ -49,6 +58,7 @@
 import { IonButton, IonModal, IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonInput } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import SelectGrower from './SelectGrower.vue';
+import useStore from '@/Store/store.ts';
 
 export default defineComponent({
   components: {
@@ -68,6 +78,7 @@ export default defineComponent({
       consignmentDate: '',
       quality: '',
       attempts: 0,
+      grower: null,
     };
   },
   methods: {
@@ -82,9 +93,18 @@ export default defineComponent({
       this.isModalOpen = false;
       // Emit the confirm event or perform any necessary actions
     },
-    saveForm() {
-      // Save form logic
-    },
+      saveAuction() {
+        const store = useStore();
+        const url = store.BASE_URL + "auction/createauction/";
+        const payload = {
+            "consignment_date": this.consignmentDate,
+            "quality": this.quality,
+            "attempts": this.attempts,
+            "grower": this.grower
+        };
+        const response = axios.post(url, payload)
+            .then((response) => console.log(response))
+      },
     cancelForm() {
       this.cancel();
     },

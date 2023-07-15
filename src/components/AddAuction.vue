@@ -78,6 +78,7 @@
   } from '@ionic/vue';
   import { defineComponent } from 'vue';
   import axios from 'axios';
+    import {useStore} from '@/Store/store.ts';
   
   export default defineComponent({
     components: {
@@ -113,7 +114,8 @@
         // Emit the confirm event or perform any necessary actions
       },
       saveAuction() {
-        const url = "http://127.0.0.1:8000/api/v1/auction/createauction/";
+        const store = useStore();
+        const url = store.BASE_URL + "auction/createauction/";
         const payload = {
               "created_date": this.formInfo.createdDate,
               "start_time": this.formInfo.startTime,
