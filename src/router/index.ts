@@ -4,7 +4,7 @@ import { RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/folder/home'
+    redirect: '/folder/signin'
   },
   {
     path: '/folder/:id',
