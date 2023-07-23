@@ -75,7 +75,7 @@ export default defineComponent({
 
     const send = (payload) => {
         const url = store.BASE_URL + "users/signin/";
-
+      console.log(url);
         response.value = axios.post(url, payload).data
              .then(() => {
 
@@ -83,7 +83,7 @@ export default defineComponent({
                store.USER = response.value.user;
                router.push({ name: 'Home', replace: true });
              })
-        console.log(url);
+
         console.log(response)
         return response.value;
     };
