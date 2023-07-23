@@ -77,20 +77,18 @@ export default defineComponent({
         const url = store.BASE_URL + "users/signin/";
         console.log(url);
         response.value = axios.post(url, payload).data
-             .then((response) => console.log(response.value))
-        return response.value.data;
+             .then((response) => {
+               store.USERTYPE = response.value.user.utype;
+               store.USER = response.value.user;
+               router.push({ name: 'Home', replace: true });
+             })
+        return response.value;
     };
 
     const login = async () => {
         let payload = formInfo.value;
-        response.value = await send(payload);
-        console.log(response.value);
-        if (response.value.user.utype != "Guest"){
-          console.log(response.value)
-          store.USERTYPE = response.value.user.utype;
-          store.USER = response.value.user;
-          router.push({ name: 'Home', replace: true })
-        }
+        const userData = await send(payload);
+        console.log(userData);
     };
 
     const goToRegistration = () => {
