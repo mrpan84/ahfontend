@@ -83,11 +83,11 @@ export default defineComponent({
 
     const login = async () => {
         let payload = formInfo.value;
-        const response = await send(payload);
-        if (response.user.utype != "Guest"){
-          console.log(response)
-          store.USERTYPE = response.user.utype;
-          store.USER = response.user;
+        response.value = await send(payload);
+        if (response.value.user.utype != "Guest"){
+          console.log(response.value)
+          store.USERTYPE = response.value.user.utype;
+          store.USER = response.value.user;
           router.push({ name: 'Home', replace: true })
         }
     };
