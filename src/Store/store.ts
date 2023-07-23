@@ -4,7 +4,7 @@ export const useStore = defineStore({
     id: 'store',
     state: () => ({
         BASE_URL: 'http://localhost:8000/api/v1/',
-        USERTYPE: 'Guest',
+        USERTYPE: 'Auctioneer',
         USER: "Jeremiah",
         GROWERS: null,
     }),
