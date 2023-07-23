@@ -148,7 +148,7 @@ switch (USERTYPE.value) {
 const loadNav = () => {
   const path = window.location.pathname.split('folder/')[1];
   if (path !== undefined) {
-    selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
+    selectedIndex.value = this.appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
   }
 }
 
@@ -160,22 +160,27 @@ watch(store.USERTYPE, async (newUT) => {
       case 'Farmer':
         appPages = farmerPages;
         loadNav();
+        USERTYPE.value = store.USERTYPE;
         break;
       case 'Buyer':
         appPages = buyerPages;
         loadNav();
+        USERTYPE.value = store.USERTYPE;
         break;
       case 'Auctioneer':
         appPages = auctioneerPages;
         loadNav();
+        USERTYPE.value = store.USERTYPE;
         break;
       case 'Admin':
         appPages = adminPages;
         loadNav();
+        USERTYPE.value = store.USERTYPE;
         break;
       default:
         appPages = guestPages;
         loadNav();
+        USERTYPE.value = store.USERTYPE;
         break;
     }
   }
