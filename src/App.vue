@@ -145,9 +145,27 @@ switch (USERTYPE.value) {
     break;
 }
 
-watch(USERTYPE, async (newUT) => {
+watch(store.USERTYPE, async (newUT) => {
   if (newUT === 'Guest') {
     router.push({ name: 'Signin', replace: true });
+  } else {
+    switch (newUT) {
+      case 'Farmer':
+        appPages = farmerPages;
+        break;
+      case 'Buyer':
+        appPages = buyerPages;
+        break;
+      case 'Auctioneer':
+        appPages = auctioneerPages;
+        break;
+      case 'Admin':
+        appPages = adminPages;
+        break;
+      default:
+        appPages = guestPages;
+        break;
+    }
   }
 });
 
