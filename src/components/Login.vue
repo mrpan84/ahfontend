@@ -83,7 +83,12 @@ export default defineComponent({
 
     const login = async () => {
         let payload = formInfo.value;
-        store.USER = await send(payload);
+        const response = await send(payload);
+        if (response){
+          store.USERTYPE = response.user.utype;
+          store.USER = response.user;
+          router.push({ name: 'Home', replace: true })
+        }
     };
 
     const goToRegistration = () => {
