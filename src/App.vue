@@ -73,7 +73,7 @@ console.log(store.USERTYPE);
 
 const USERTYPE = ref(store.USERTYPE);
 const USER = ref();
-
+const navComponent = ref('');
 const selectedIndex = ref(0);
 let appPages = [
   {
@@ -123,7 +123,7 @@ switch (USERTYPE.value) {
 }
 
 const loadNav = () => {
-  this.navComponent = 'Navigation';
+  navComponent.value = 'Navigation';
 }
 
 watch(store.USERTYPE, async (newUT) => {
