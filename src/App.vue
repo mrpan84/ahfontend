@@ -64,7 +64,7 @@ import {
 import { auctioneerPages, buyerPages, farmerPages, adminPages, guestPages } from '@/JS/';
 import { useRouter } from 'vue-router';
 import { useStore } from '@/Store/store.ts';
-import {Navigation} from '@/components/Navigation.vue';
+import Navigation from '@/components/Navigation.vue';
 
 const router = useRouter();
 const store = useStore();
