@@ -1,11 +1,11 @@
 import {defineStore} from 'pinia';
 
-const useStore = defineStore({
+export const useStore = defineStore({
     id: 'store',
     state: () => ({
         BASE_URL: 'http://localhost:8000/api/v1/',
         USERTYPE: 'Auctioneer',
-        USER: null,
+        USER: "Jeremiah",
         GROWERS: null,
     }),
     getter: {
@@ -28,6 +28,4 @@ const useStore = defineStore({
             this.GROWERS = growers
             },
     }
-})
-
-export {useStore};
+});

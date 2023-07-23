@@ -37,11 +37,12 @@
 
 <script lang="ts">
 import { IonButton, IonContent, IonIcon, IonInput, IonPage } from '@ionic/vue';
-import { ref, defineComponent } from 'vue';
+import { ref, defineComponent, watch } from 'vue';
 import { personCircleOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
 import { IonLoading } from '@ionic/vue';
-import useStore from '@/Store/store.ts'
+import {useStore} from '@/Store/store.ts'
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'LoginForm',
@@ -55,6 +56,7 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
+    const router = useRouter();
     const username = ref('');
     const password = ref('');
     const showPassword = ref(false);
@@ -66,27 +68,41 @@ export default defineComponent({
       showPassword.value = !showPassword.value;
     };
 
-    const send = async (payload) => {
-        const url = store.BASE_URL + "users/login/";
+     // Create a ref to store the response of the Axios request.
+    const response = ref();
+
+
+
+    const send = (payload) => {
+        const url = store.BASE_URL + "users/signin/";
         console.log(url);
-        const response = await axios.post(url, payload)
-             .then((response) => console.log(response))
-        return response.data;
+        response.value = axios.post(url, payload).data
+             .then((response) => console.log(response.value))
+        return response.value.data;
     };
 
-    const login = () => {
-        let payload = JSON.stringify(formInfo.value);
-        const user = send(payload);
-        if(true){
-            store.USERTYPE = user.data.utype;
-        } else {
-
-        }
+    const login = async () => {
+        let payload = formInfo.value;
+        const user = await send(payload);
     };
 
     const goToRegistration = () => {
       console.log();
     };
+
+    // Watch the `users` ref for changes.
+        watch(response, (newValue, oldValue) => {
+          // Update the `users` state with the new response data.
+          console.log(this.response.value)
+          if(this.response.value){
+              store.USERTYPE = newValue.data.user.utype;
+              store.USER = newValue.data.user;
+              router.push({ name: 'Home', replace: true });
+          } else {
+              store.USERTYPE = "Guest";
+              router.push({ name: 'Signin', replace: true });
+          }
+        });
 
     return { data, goToRegistration, login, username, password, showPassword, toggleShowPassword, personCircleOutline, eyeOutline, eyeOffOutline,
         formInfo
