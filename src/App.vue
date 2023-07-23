@@ -145,6 +145,13 @@ switch (USERTYPE.value) {
     break;
 }
 
+const loadNav = () => {
+  const path = window.location.pathname.split('folder/')[1];
+  if (path !== undefined) {
+    selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
+  }
+}
+
 watch(store.USERTYPE, async (newUT) => {
   if (newUT === 'Guest') {
     router.push({ name: 'Signin', replace: true });
@@ -152,18 +159,23 @@ watch(store.USERTYPE, async (newUT) => {
     switch (newUT) {
       case 'Farmer':
         appPages = farmerPages;
+        loadNav();
         break;
       case 'Buyer':
         appPages = buyerPages;
+        loadNav();
         break;
       case 'Auctioneer':
         appPages = auctioneerPages;
+        loadNav();
         break;
       case 'Admin':
         appPages = adminPages;
+        loadNav();
         break;
       default:
         appPages = guestPages;
+        loadNav();
         break;
     }
   }
