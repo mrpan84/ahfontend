@@ -77,7 +77,7 @@ export default defineComponent({
         const url = store.BASE_URL + "users/signin/";
         console.log(url);
         response.value = axios.post(url, payload).data
-             .then((response) => {
+             .then(() => {
                store.USERTYPE = response.value.user.utype;
                store.USER = response.value.user;
                router.push({ name: 'Home', replace: true });
