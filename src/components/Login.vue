@@ -84,7 +84,7 @@ export default defineComponent({
     const login = async () => {
         let payload = formInfo.value;
         const response = await send(payload);
-        if (response){
+        if (response.user.utype != "Guest"){
           console.log(response)
           store.USERTYPE = response.user.utype;
           store.USER = response.user;
