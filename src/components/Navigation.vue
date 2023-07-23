@@ -44,7 +44,6 @@ import { useStore } from '@/Store/store.ts';
 
 const router = useRouter();
 const store = useStore();
-console.log("we're here...");
 const selectedIndex = ref(0);
 let appPages = [
   {

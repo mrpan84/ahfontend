@@ -123,6 +123,7 @@ switch (USERTYPE.value) {
 }
 
 const loadNav = () => {
+  console.log("we're here...");
   navComponent.value = 'Navigation';
 }
 
