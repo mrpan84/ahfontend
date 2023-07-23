@@ -83,7 +83,7 @@ export default defineComponent({
 
     const login = async () => {
         let payload = formInfo.value;
-        const user = await send(payload);
+        store.USER = await send(payload);
     };
 
     const goToRegistration = () => {
