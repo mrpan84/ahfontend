@@ -85,6 +85,7 @@ export default defineComponent({
         let payload = formInfo.value;
         const response = await send(payload);
         if (response){
+          console.log(response)
           store.USERTYPE = response.user.utype;
           store.USER = response.user;
           router.push({ name: 'Home', replace: true })
