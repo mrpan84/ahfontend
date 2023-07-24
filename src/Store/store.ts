@@ -7,12 +7,14 @@ export const useStore = defineStore({
         USERTYPE: 'Auctioneer',
         USER: "Jeremiah",
         GROWERS: null,
+        PAGES: null,
     }),
     getter: {
         getBaseUrl: (state) => state.BASE_URL,
         getUserType: (state) => state.USERTYPE,
         getUser: (state) => state.USER,
         getGrowers: (state) => state.GROWERS,
+        getPagess: (state) => state.PAGES,
     },
     actions: {
         setBaseUrl(url:string){
@@ -27,5 +29,8 @@ export const useStore = defineStore({
         setGrowers(growers:any){
             this.GROWERS = growers
             },
+        setPages(pages:any){
+            this.PAGES = pages
+        },
     }
 });

@@ -1,4 +1,5 @@
 <template>
+<Navigation></Navigation>
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
@@ -26,6 +27,7 @@
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import Card from '@/components/Card.vue';
+import Navigation from '@/components/Navigation.vue';
 import AccordionConsignments from '@/components/AccordionConsignments.vue';
 </script>
 
