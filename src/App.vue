@@ -73,7 +73,7 @@ console.log(store.USERTYPE);
 const USERTYPE = ref(store.USERTYPE);
 const USER = ref();
 const navComponent = ref('');
-const selectedIndex = ref(0);
+//const selectedIndex = ref(0);
 let appPages = [
   {
     title: 'Dashboard',
