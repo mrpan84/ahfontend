@@ -39,7 +39,7 @@ import {
   paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp, home, homeOutline, homeSharp,
   bagHandleOutline, bagHandleSharp, timeOutline, timeSharp, giftOutline, giftSharp,} from 'ionicons/icons';
 import { auctioneerPages, buyerPages, farmerPages, adminPages, guestPages } from '@/JS/';
-import { useRouter } from '@/router/index.ts';
+import { useRouter } from 'vue-router';
 import { useStore } from '@/Store/store.ts';
 
 const router = useRouter();
