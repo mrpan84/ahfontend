@@ -4,35 +4,6 @@
       <div id="nav">
         <component :is="navComponent"></component>
       </div>
-      <ion-menu content-id="main-content" type="overlay">
-        <ion-content>
-          <ion-list id="inbox-list">
-            <ion-list-header>{{ store.USERTYPE }}</ion-list-header>
-            <ion-note>Hello {{ store.USER.fname }} {{ store.USER.sname }}</ion-note>
-
-            <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
-              <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" :detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
-                <ion-icon aria-hidden="true" slot="start" :ios="p.iosIcon" :md="p.mdIcon"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          </ion-list>
-
-          <ion-list id="labels-list">
-            <ion-list-header>Labels</ion-list-header>
-
-            <ion-item v-for="(label, index) in labels" lines="none" :key="index">
-              <router-link :to="{ name: 'Signin', replace: true}">
-                <div class="label-wrapper">
-                  <ion-icon aria-hidden="true" slot="start" :ios="logOutOutline" :md="logOutOutline"></ion-icon>
-                  <ion-label>{{ label }}</ion-label>
-                </div>
-              </router-link>
-            </ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-menu>
-
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-split-pane>
   </ion-app>
