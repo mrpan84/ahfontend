@@ -122,6 +122,9 @@ switch (USERTYPE.value) {
     break;
 }
 
+watch(store.USERTYPE, (newValue, oldValue) => {
+  console.log('Name changed from', oldValue, 'to', newValue)
+})
 const loadNav = () => {
   console.log("we're here...");
   navComponent.value = 'Navigation';
