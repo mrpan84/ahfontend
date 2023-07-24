@@ -43,6 +43,7 @@ import { IonLoading } from '@ionic/vue';
 import {useStore} from '@/Store/store.ts'
 import axios from 'axios';
 import { useRouter } from 'vue-router';
+import { auctioneerPages, buyerPages, farmerPages, adminPages, guestPages } from '@/JS/';
 
 export default defineComponent({
   name: 'LoginForm',
@@ -71,7 +72,10 @@ export default defineComponent({
      // Create a ref to store the response of the Axios request.
     const response = ref();
 
-
+    const loadNav = () => {
+      console.log("we're here...");
+      navComponent.value = 'Navigation';
+    }
 
     const send = (payload) => {
         const url = store.BASE_URL + "users/signin/";
@@ -82,6 +86,33 @@ export default defineComponent({
                store.USERTYPE = res.data.user.utype;
                store.USER = res.data.user;
                router.push({ name: 'Home', replace: true });
+               switch (store.USERTYPE) {
+                 case 'Farmer':
+                   store.PAGES = farmerPages;
+                   loadNav();
+                   USERTYPE.value = store.USERTYPE;
+                   break;
+                 case 'Buyer':
+                   store.PAGES = buyerPages;
+                   loadNav();
+                   USERTYPE.value = store.USERTYPE;
+                   break;
+                 case 'Auctioneer':
+                   store.PAGES = auctioneerPages;
+                   loadNav();
+                   USERTYPE.value = store.USERTYPE;
+                   break;
+                 case 'Admin':
+                   store.PAGES = adminPages;
+                   loadNav();
+                   USERTYPE.value = store.USERTYPE;
+                   break;
+                 default:
+                   store.PAGES = guestPages;
+                   loadNav();
+                   USERTYPE.value = store.USERTYPE;
+                   break;
+               }
              })
             .catch((error) => {
               console.log(error);
