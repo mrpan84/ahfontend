@@ -50,6 +50,7 @@ export default defineComponent({
     IonContent,
     IonModal,
     SelectConsignments,
+    Navigation,
   },
   data() {
     return {
