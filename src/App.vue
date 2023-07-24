@@ -129,6 +129,7 @@ const loadNav = () => {
 
 watch(store.USERTYPE, async (newUT) => {
   if (newUT === 'Guest') {
+    loadNav();
     router.push({ name: 'Signin', replace: true });
   } else {
     switch (newUT) {
