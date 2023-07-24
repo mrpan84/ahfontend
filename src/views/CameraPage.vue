@@ -18,6 +18,7 @@ export default defineComponent({
     IonContent,
     IonModal,
     Camera,
+    Navigation,
   },
   data() {
     return {
