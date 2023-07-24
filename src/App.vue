@@ -1,9 +1,9 @@
 <template>
   <ion-app>
     <ion-split-pane content-id="main-content">
-      <div id="nav">
+      <!--div-- id="nav">
         <component :is="navComponent"></component>
-      </div>
+      </div-->
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-split-pane>
   </ion-app>
