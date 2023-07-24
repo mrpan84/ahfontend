@@ -1,4 +1,5 @@
 <template>
+  <Navigation></Navigation>
   <ion-content>
     <div class="main-container">
       <Camera></Camera>
@@ -10,6 +11,7 @@
 import { IonContent, IonModal } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import Camera from '@/components/MyCamera.vue';
+import Navigation from '@/components/Navigation.vue';
 
 export default defineComponent({
   components: {

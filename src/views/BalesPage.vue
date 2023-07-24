@@ -1,4 +1,5 @@
 <template>
+  <Navigation></Navigation>
   <ion-content>
     <div class="main-container">
       <button class="open-modal-btn" @click="openModal">Add Bales</button>
@@ -42,6 +43,7 @@
 import { IonContent, IonModal } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import SelectConsignments from '@/components/SelectConsignments.vue';
+import Navigation from '@/components/Navigation.vue';
 
 export default defineComponent({
   components: {

@@ -164,10 +164,10 @@ watch(store.USERTYPE, async (newUT) => {
   }
 });
 
-const path = window.location.pathname.split('folder/')[1];
-if (path !== undefined) {
-  selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
-}
+// const path = window.location.pathname.split('folder/')[1];
+// if (path !== undefined) {
+//   selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
+// }
 </script>
 
 `<style scoped>

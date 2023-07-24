@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import ForgotPassword from '@/components/ForgotPassword.vue';
+import Navigation from '@/components/Navigation.vue';
 </script>
 
 <style scoped>

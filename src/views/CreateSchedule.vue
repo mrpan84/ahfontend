@@ -1,4 +1,5 @@
 <template>
+  <Navigation></Navigation>
   <div class="main-container">
     <div class="create-auction-container">
       <h2>Create Auction Schedule:</h2>
@@ -33,6 +34,8 @@
 </template>
 
 <script>
+
+import Navigation from '@/components/Navigation.vue';
 export default {
   data() {
     return {

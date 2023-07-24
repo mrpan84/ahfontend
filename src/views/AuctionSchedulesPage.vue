@@ -1,4 +1,5 @@
 <template>
+  <Navigation></Navigation>
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
@@ -31,6 +32,7 @@ import AccordionSchedules from '@/components/AccordionSchedules.vue';
 import BreadCrumbsSchedules from '@/components/BreadCrumbsSchedules.vue';
 import AddAuction from '@/components/AddAuction.vue';
 import {useStore} from '@/Store/store.ts';
+import Navigation from '@/components/Navigation.vue';
 const store = useStore();
 </script>
 

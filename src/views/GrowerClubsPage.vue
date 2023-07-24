@@ -1,4 +1,5 @@
 <template>
+  <Navigation></Navigation>
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
@@ -31,6 +32,7 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import AccordionGrowers from '@/components/AccordionGrowers.vue';
 import BreadCrumbsConsignments from '@/components/BreadCrumbsConsignments.vue';
 import AddGrower from '@/components/AddGrower.vue';
+import Navigation from '@/components/Navigation.vue';
 </script>
 
 <style scoped>
