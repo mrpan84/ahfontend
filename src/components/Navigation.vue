@@ -51,7 +51,7 @@ let appPages = [
     url: '/folder/Dashboard',
     iosIcon: homeOutline,
     mdIcon: homeSharp,
-  },
+  }
 ];
 
 const labels = ['Signout'];
