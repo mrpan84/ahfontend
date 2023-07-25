@@ -52,24 +52,6 @@ let appPages = [
     iosIcon: homeOutline,
     mdIcon: homeSharp,
   },
-  {
-    title: 'Categories',
-    url: '/folder/Categories',
-    iosIcon: readerOutline,
-    mdIcon: readerSharp,
-  },
-  {
-    title: 'Bids',
-    url: '/folder/Bids',
-    iosIcon: hammerOutline,
-    mdIcon: hammerSharp,
-  },
-  {
-    title: 'Settings',
-    url: '/folder/Settings',
-    iosIcon: settingsOutline,
-    mdIcon: settingsSharp,
-  },
 ];
 
 const labels = ['Signout'];
@@ -94,6 +76,9 @@ switch (store.USERTYPE) {
 }
 
 const path = window.location.pathname.split('folder/')[1];
+
+console.log(path);
+
 if (path !== undefined) {
   selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
 }
