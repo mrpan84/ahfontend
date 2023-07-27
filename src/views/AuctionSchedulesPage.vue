@@ -1,5 +1,5 @@
 <template>
-  <Navigation></Navigation>
+  <!--Navigation></Navigation-->
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>

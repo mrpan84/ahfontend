@@ -85,7 +85,6 @@ export default defineComponent({
                console.log(res);
                store.USERTYPE = res.data.user.utype;
                store.USER = res.data.user;
-               router.push({ name: 'Home', replace: true });
                switch (store.USERTYPE) {
                  case 'Farmer':
                    store.PAGES = farmerPages;
@@ -113,6 +112,7 @@ export default defineComponent({
                    USERTYPE.value = store.USERTYPE;
                    break;
                }
+               router.push({ name: 'Home', replace: true });
              })
             .catch((error) => {
               console.log(error);
