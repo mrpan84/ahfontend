@@ -82,26 +82,30 @@ export default defineComponent({
       //console.log(url);
         axios.post(url, payload)
              .then((res) => {
-               console.log(res);
-               store.USERTYPE = res.data.user.utype;
-               store.USER = res.data.user;
-               router.push({ name: 'Home', replace: true });
-               switch (store.USERTYPE) {
-                 case 'Farmer':
-                   store.PAGES = farmerPages;
-                   break;
-                 case 'Buyer':
-                   store.PAGES = buyerPages;
-                   break;
-                 case 'Auctioneer':
-                   store.PAGES = auctioneerPages;
-                   break;
-                 case 'Admin':
-                   store.PAGES = adminPages;
-                   break;
-                 default:
-                   store.PAGES = guestPages;
-                   break;
+               if(res.data.message == "Login Successful"){
+                  store.USERTYPE = res.data.user.utype;
+                  store.USER = res.data.user;
+
+                  router.push({name: 'Home', replace: true});
+                  switch (store.USERTYPE) {
+                     case 'Farmer':
+                       store.PAGES = farmerPages;
+                       break;
+                     case 'Buyer':
+                       store.PAGES = buyerPages;
+                       break;
+                     case 'Auctioneer':
+                       store.PAGES = auctioneerPages;
+                       break;
+                     case 'Admin':
+                       store.PAGES = adminPages;
+                       break;
+                     default:
+                       store.PAGES = guestPages;
+                       break;
+                  }
+               } else {
+                 alert(res.data.message);
                }
              })
             .catch((error) => {
