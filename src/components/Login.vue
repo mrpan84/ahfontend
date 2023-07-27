@@ -89,27 +89,22 @@ export default defineComponent({
                switch (store.USERTYPE) {
                  case 'Farmer':
                    store.PAGES = farmerPages;
-                   //loadNav();
                    USERTYPE.value = store.USERTYPE;
                    break;
                  case 'Buyer':
                    store.PAGES = buyerPages;
-                   //loadNav();
                    USERTYPE.value = store.USERTYPE;
                    break;
                  case 'Auctioneer':
                    store.PAGES = auctioneerPages;
-                   //loadNav();
                    USERTYPE.value = store.USERTYPE;
                    break;
                  case 'Admin':
                    store.PAGES = adminPages;
-                   //loadNav();
                    USERTYPE.value = store.USERTYPE;
                    break;
                  default:
                    store.PAGES = guestPages;
-                   //loadNav();
                    USERTYPE.value = store.USERTYPE;
                    break;
                }
