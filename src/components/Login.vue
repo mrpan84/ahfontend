@@ -89,23 +89,18 @@ export default defineComponent({
                switch (store.USERTYPE) {
                  case 'Farmer':
                    store.PAGES = farmerPages;
-                   USERTYPE.value = store.USERTYPE;
                    break;
                  case 'Buyer':
                    store.PAGES = buyerPages;
-                   USERTYPE.value = store.USERTYPE;
                    break;
                  case 'Auctioneer':
                    store.PAGES = auctioneerPages;
-                   USERTYPE.value = store.USERTYPE;
                    break;
                  case 'Admin':
                    store.PAGES = adminPages;
-                   USERTYPE.value = store.USERTYPE;
                    break;
                  default:
                    store.PAGES = guestPages;
-                   USERTYPE.value = store.USERTYPE;
                    break;
                }
              })
