@@ -72,12 +72,7 @@ export default defineComponent({
      // Create a ref to store the response of the Axios request.
     const response = ref();
 
-    const loadNav = () => {
-      console.log("we're here...");
-      navComponent.value = 'Navigation';
-    }
-
-    const send = (payload) => {
+      const send = (payload) => {
         const url = store.BASE_URL + "users/signin/";
       //console.log(url);
         axios.post(url, payload)
