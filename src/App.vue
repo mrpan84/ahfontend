@@ -8,56 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import {
-  IonApp,
-  IonContent,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonListHeader,
-  IonMenu,
-  IonMenuToggle,
-  IonNote,
-  IonRouterOutlet,
-  IonSplitPane,
-} from '@ionic/vue';
+import { IonApp, IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonNote, IonRouterOutlet, IonSplitPane,} from '@ionic/vue';
 import { ref, watch } from 'vue';
-import {
-  archiveOutline,
-  archiveSharp,
-  bookmarkOutline,
-  bookmarkSharp,
-  calendarOutline,
-  calendarSharp,
-  cameraOutline,
-  hammerOutline,
-  logOutOutline,
-  logOutSharp,
-  readerOutline,
-  readerSharp,
-  settingsOutline,
-  settingsSharp,
-  leafOutline,
-  leafSharp,
-  hammerSharp,
-  cameraSharp,
-  paperPlaneOutline,
-  paperPlaneSharp,
-  trashOutline,
-  trashSharp,
-  warningOutline,
-  warningSharp,
-  home,
-  homeOutline,
-  homeSharp,
-  bagHandleOutline,
-  bagHandleSharp,
-  timeOutline,
-  timeSharp,
-  giftOutline,
-  giftSharp,
-} from 'ionicons/icons';
+import {  hammerOutline, readerOutline, readerSharp, settingsOutline, settingsSharp,  hammerSharp, homeOutline,  homeSharp} from 'ionicons/icons';
 import { auctioneerPages, buyerPages, farmerPages, adminPages, guestPages } from '@/JS/';
 import { useRouter } from 'vue-router';
 import { useStore } from '@/Store/store.ts';

@@ -61,7 +61,7 @@ export default defineComponent({
     const username = ref('');
     const password = ref('');
     const showPassword = ref(false);
-    const formInfo =ref({username: '', password: ''})
+    const formInfo =ref({username: '', password: ''});
 
     const data = ref();
 
@@ -74,7 +74,6 @@ export default defineComponent({
 
       const send = (payload) => {
         const url = store.BASE_URL + "users/signin/";
-      //console.log(url);
         axios.post(url, payload)
              .then((res) => {
                if(res.data.message == "Login Successful"){
