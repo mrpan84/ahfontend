@@ -1,7 +1,7 @@
 <template>
   <ion-app>
     <ion-split-pane content-id="main-content">
-      <!--Navigation></Navigation-->
+      <Navigation></Navigation>
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-split-pane>
   </ion-app>
@@ -16,9 +16,9 @@ import { useRouter } from 'vue-router';
 import { useStore } from '@/Store/store.ts';
 import Navigation from '@/components/Navigation.vue';
 
-const router = useRouter();
-const store = useStore();
 
+const store = useStore();
+store.ROUTER = useRouter();
 console.log(store.USERTYPE);
 
 const USERTYPE = ref(store.USERTYPE);
@@ -83,7 +83,7 @@ const loadNav = () => {
 watch(store.USERTYPE, async (newUT) => {
   if (newUT === 'Guest') {
     loadNav();
-    router.push({ name: 'Signin', replace: true });
+    store.ROUTER.push({ name: 'Signin', replace: true });
   } else {
     switch (newUT) {
       case 'Farmer':

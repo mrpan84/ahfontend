@@ -1,5 +1,4 @@
 <template>
-  <Navigation></Navigation>
   <ion-content>
     <div class="main-container">
       <button class="open-modal-btn" @click="openModal">Add Bales</button>

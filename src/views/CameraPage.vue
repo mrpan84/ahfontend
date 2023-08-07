@@ -1,5 +1,4 @@
 <template>
-  <Navigation></Navigation>
   <ion-content>
     <div class="main-container">
       <Camera></Camera>
