@@ -5,7 +5,7 @@
         <ion-icon :icon="personCircleOutline" class="login-icon"></ion-icon>
         <h1 class="login-title">Hi! Login Here </h1>
         <div class="input-container">
-          <ion-input placeholder="Username" v-model="formInfo.username" class="input-field"></ion-input>
+          <ion-input placeholder="PhoneNumber" v-model="formInfo.username" class="input-field"></ion-input>
           <ion-input placeholder="Password" v-model="formInfo.password"
             :type="showPassword ? 'text' : 'password'" class="input-field" ></ion-input>
           <div class="show-password-checkbox">
