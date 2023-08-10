@@ -50,6 +50,8 @@ import {
     trashSharp,
     warningOutline,
     warningSharp,
+    peoplesharp,
+    peopleoutline,
     home,
     homeOutline,
     homeSharp,
@@ -82,8 +84,8 @@ const auctioneerPages = [
     {
       title: 'Grower Clubs',
       url: '/folder/growerclubs',
-      iosIcon: cameraOutline,
-      mdIcon: cameraSharp,
+      iosIcon: peopleOutline,
+      mdIcon: peopleSharp,
     }, 
     {
       title: 'Camera',
