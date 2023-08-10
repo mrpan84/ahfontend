@@ -1,7 +1,7 @@
 <template>
   <ion-app>
     <ion-split-pane content-id="main-content">
-      <Navigation></Navigation>
+      <Navigation v-if="store.USERTYPE != 'Guest'"></Navigation>
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-split-pane>
   </ion-app>

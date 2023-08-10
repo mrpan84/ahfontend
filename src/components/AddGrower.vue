@@ -97,22 +97,22 @@ export default {
   }
 };
 </script>
-  
+
   <style scoped>
   .main-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
   }
-  
+
   .open-modal-btn {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
   }
-  
+
   .modal-overlay {
     position: fixed;
     top: 0;
@@ -125,11 +125,11 @@ export default {
     align-items: center;
     z-index: 999;
   }
-  
+
   .modal-overlay.open {
     display: flex;
   }
-  
+
   .add-grower-form-container {
     max-width: 400px;
     padding: 20px;
@@ -138,18 +138,18 @@ export default {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
-  
+
   h2 {
     margin-top: 0;
     font-size: 24px;
     color: #333;
   }
-  
+
   .form-group {
     margin-bottom: 20px;
     text-align: left;
   }
-  
+
   label {
     display: block;
     font-weight: bold;
@@ -157,7 +157,7 @@ export default {
     color: #555;
     margin-bottom: 5px;
   }
-  
+
   .form-input {
     width: 100%;
     padding: 10px;
@@ -165,18 +165,18 @@ export default {
     border-radius: 5px;
     border: 1px solid #ccc;
   }
-  
+
   .form-checkbox {
     margin-top: 5px;
   }
-  
+
   button {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
   }
-  
+
   .btn-save {
     background-color: #4caf50;
     color: white;
@@ -184,30 +184,29 @@ export default {
     margin-right: 10px;
     transition: background-color 0.3s ease;
   }
-  
+
   .btn-save:hover {
     background-color: #45a049;
   }
-  
+
   .btn-cancel {
     background-color: #f44336;
     color: white;
     border: none;
     transition: background-color 0.3s ease;
   }
-  
+
   .btn-cancel:hover {
     background-color: #e53935;
   }
-  
+
   .checkbox-container {
     display: flex;
     align-items: center;
   }
-  
+
   .checkbox-container label {
     margin-right: 10px;
     margin-top: 10px;
   }
   </style>
-  
