@@ -3,7 +3,8 @@
       <ion-accordion v-for="(schedule, index) in schedules" :value="schedule.auction_id" :toggle-icon="caretDownCircle" toggle-icon-slot="start">
         <ion-item slot="header" color="light">
           <ion-label> {{schedule.venue}} <small><date-format :date="schedule.start_time" has-time/></small></ion-label>
-          <ion-badge slot="end">Pending</ion-badge>
+          <ion-badge v-if="+(new Date(schedule.start_time)) > Date.now()" slot="end">Pending</ion-badge>
+          <ion-badge v-if="+(new Date(schedule.start_time).getTime()) < Date.now() && +(new Date(schedule.end_time).getTime()) > Date.now()" slot="end" color="danger">Live</ion-badge>
         </ion-item>
         <div class="ion-padding" slot="content">
             
