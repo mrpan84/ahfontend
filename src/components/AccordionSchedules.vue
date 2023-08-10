@@ -7,15 +7,18 @@
           <ion-badge v-if="+(new Date(schedule.start_time).getTime()) < Date.now() && +(new Date(schedule.end_time).getTime()) > Date.now()" slot="end" color="danger">Live</ion-badge>
         </ion-item>
         <div class="ion-padding" slot="content">
-            
+          <ion-button v-if="+(new Date(schedule.start_time).getTime()) < Date.now() && +(new Date(schedule.end_time).getTime()) > Date.now()">
+            Join Live Session
+            <ion-icon slot="end" :icon="hammerSharp"></ion-icon>
+          </ion-button>
         </div>
       </ion-accordion>
     </ion-accordion-group>
   </template>
   
   <script lang="ts">
-    import { IonAccordion, IonAccordionGroup, IonItem, IonLabel, IonBadge } from '@ionic/vue';
-    import { caretDownCircle } from 'ionicons/icons';
+    import { IonAccordion, IonAccordionGroup, IonItem, IonLabel, IonBadge, IonButton, IonIcon } from '@ionic/vue';
+    import { caretDownCircle, hammerSharp } from 'ionicons/icons';
     import { defineComponent, ref } from 'vue';
     import axios, { Axios } from 'axios';
     import {useStore} from '@/Store/store.ts';
@@ -27,6 +30,8 @@
         IonItem,
         IonLabel,
         IonBadge,
+        IonButton,
+        IonIcon,
       },
       setup() {
         const store = useStore();
@@ -38,7 +43,7 @@
         }
 
         loadSchedules()
-        return { caretDownCircle, schedules };
+        return { caretDownCircle, schedules, hammerSharp };
       },
     });
   </script>

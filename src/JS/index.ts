@@ -66,8 +66,8 @@ const auctioneerPages = [
     {
       title: 'Stock List',
       url: '/folder/stock',
-      iosIcon: hammerOutline,
-      mdIcon: hammerSharp,
+      iosIcon: readerOutline,
+      mdIcon: readerSharp,
     },
     {
       title: 'Auction Schedules',
@@ -76,10 +76,10 @@ const auctioneerPages = [
       mdIcon: calendarSharp,
     },
     {
-      title: 'Auction Sessions',
+      title: 'Live Auction Session',
       url: '/folder/sessions',
-      iosIcon: readerOutline,
-      mdIcon: readerSharp,
+      iosIcon: hammerOutline,
+      mdIcon: hammerSharp,
     },
     {
       title: 'Grower Clubs',
