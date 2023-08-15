@@ -9,6 +9,8 @@ export const useStore = defineStore({
         GROWERS: null,
         PAGES: null,
         ROUTER: null,
+        AUCTION_ID,
+        LIVE_SESSION,
     }),
     getter: {
         getBaseUrl: (state) => state.BASE_URL,
@@ -17,6 +19,8 @@ export const useStore = defineStore({
         getGrowers: (state) => state.GROWERS,
         getPagess: (state) => state.PAGES,
         getRouter: (state) => state.ROUTER,
+        getAuctionId: (state) => state.AUCTION_ID,
+        getLiveSession: (state) => state.LIVE_SESSION,
     },
     actions: {
         setBaseUrl(url:string){
@@ -37,5 +41,11 @@ export const useStore = defineStore({
         setRouter(router:any){
             this.ROUTER = router
         },
+        setAuctionId(auction_id: int){
+            this.AUCTION_ID = auction_id
+        },
+        setLiveSession(live_session: any){
+            this.LIVE_SESSION = live_session
+        }
     }
 });

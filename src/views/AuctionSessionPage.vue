@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Live Auction Sessions </ion-title>
+        <ion-title>Live - {{store.LIVE_SESSION.venue}} Auction Sessions </ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -17,7 +17,7 @@
       </ion-header>
 
       <div id="container">
-        <accordion-my-stock></accordion-my-stock>
+        <accordion-auction-stock></accordion-auction-stock>
       </div>
     </ion-content>
   </ion-page>
@@ -25,8 +25,20 @@
 
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import AccordionMyStock from "@/components/AccordionMyStock.vue";
+import AccordionAuctionStock from "@/components/AccordionAuctionStock.vue";
+import { defineComponent, ref } from 'vue';
+import axios, { Axios } from 'axios';
 import Navigation from '@/components/Navigation.vue';
+import {useStore} from '@/Store/store.ts';
+const session = ref();
+const store = useStore();
+const loadSession = async () => {
+  const response = await axios.get(store.BASE_URL + "auction/auctions/" + store.AUCTION_ID + "/");
+  store.LIVE_SESSION = response.data;
+}
+
+loadSession();
+
 </script>
 
 <style scoped>

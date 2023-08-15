@@ -7,7 +7,7 @@
           <ion-badge v-if="+(new Date(schedule.start_time).getTime()) < Date.now() && +(new Date(schedule.end_time).getTime()) > Date.now()" slot="end" color="danger">Live</ion-badge>
         </ion-item>
         <div class="ion-padding" slot="content">
-          <ion-button v-if="+(new Date(schedule.start_time).getTime()) < Date.now() && +(new Date(schedule.end_time).getTime()) > Date.now()">
+          <ion-button v-if="+(new Date(schedule.start_time).getTime()) < Date.now() && +(new Date(schedule.end_time).getTime()) > Date.now()" @click="goToSession(schedule.auction_id)">
             Join Live Session
             <ion-icon slot="end" :icon="hammerSharp"></ion-icon>
           </ion-button>
@@ -22,6 +22,7 @@
     import { defineComponent, ref } from 'vue';
     import axios, { Axios } from 'axios';
     import {useStore} from '@/Store/store.ts';
+    import { useRouter } from 'vue-router';
   
     export default defineComponent({
       components: {
@@ -42,8 +43,13 @@
         schedules.value = response.data;
         }
 
+        const goToSession = (id) => {
+          store.AUCTION_ID = id;
+          store.ROUTER.push({ name: 'Session', replace: true });
+        }
+
         loadSchedules()
-        return { caretDownCircle, schedules, hammerSharp };
+        return { caretDownCircle, schedules, hammerSharp, goToSession };
       },
     });
   </script>
