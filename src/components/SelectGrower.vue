@@ -13,8 +13,8 @@
   <script lang="ts">
     import { IonItem, IonList, IonSelect, IonSelectOption, IonText } from '@ionic/vue';
     import { defineComponent, ref } from 'vue';
-    import axios from 'axios';
-    import useStore from '@/Store/store.ts'
+    import axios, { Axios } from 'axios';
+    import {useStore} from '@/Store/store.ts'
   
     export default defineComponent({
       components: { IonItem, IonList, IonSelect, IonSelectOption, IonText },

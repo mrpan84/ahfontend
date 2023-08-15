@@ -58,7 +58,7 @@
 import { IonButton, IonModal, IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonInput } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import SelectGrower from './SelectGrower.vue';
-import useStore from '@/Store/store.ts';
+import {useStore} from '@/Store/store.ts';
 
 export default defineComponent({
   components: {

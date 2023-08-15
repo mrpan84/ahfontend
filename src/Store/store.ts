@@ -9,8 +9,8 @@ export const useStore = defineStore({
         GROWERS: null,
         PAGES: null,
         ROUTER: null,
-        AUCTION_ID,
-        LIVE_SESSION,
+        AUCTION_ID: null,
+        LIVE_SESSION: null,
     }),
     getter: {
         getBaseUrl: (state) => state.BASE_URL,

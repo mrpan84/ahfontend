@@ -6,9 +6,11 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import LoginForm from "@/components/Login.vue";
 import { onBeforeMount } from 'vue';
+import { useStore } from '@/Store/store.ts';
 
+const store = useStore();
 onBeforeMount(() => {
-  //USERTYPE.value = "Guest";
+  store.USERTYPE = "Guest";
 });
 </script>
 

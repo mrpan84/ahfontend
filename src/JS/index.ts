@@ -65,7 +65,7 @@ import {
 const auctioneerPages = [
     {
       title: 'Stock List',
-      url: '/folder/stock',
+      url: '/folder/consignments',
       iosIcon: readerOutline,
       mdIcon: readerSharp,
     },
@@ -103,7 +103,7 @@ const auctioneerPages = [
   const buyerPages = [
    {
       title: 'View Auction',
-      url: '/folder/buyer/view',
+      url: '/folder/view',
       iosIcon: calendarOutline,
       mdIcon: calendarSharp,
     }, 
