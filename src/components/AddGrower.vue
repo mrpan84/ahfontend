@@ -16,7 +16,35 @@
 
           <ion-item>
             <ion-label position="stacked">District:</ion-label>
-            <ion-input type="text" v-model="district"></ion-input>
+            <ion-select v-model="district">
+              <ion-select-option value="Balaka">Balaka</ion-select-option>
+              <ion-select-option value="Blantyre">Blantyre</ion-select-option>
+              <ion-select-option value="Chikwawa">Chikwawa</ion-select-option>
+              <ion-select-option value="Chiradzulu">Chiradzulu</ion-select-option>
+              <ion-select-option value="Chitipa">Chitipa</ion-select-option>
+              <ion-select-option value="Dedza">Dedza</ion-select-option>
+              <ion-select-option value="Dowa">Dowa</ion-select-option>
+              <ion-select-option value="Karonga">Karonga</ion-select-option>
+              <ion-select-option value="Kasungu">Kasungu</ion-select-option>
+              <ion-select-option value="Likoma (Likoma Island)">Likoma (Likoma Island)</ion-select-option>
+              <ion-select-option value="Lilongwe">Lilongwe</ion-select-option>
+              <ion-select-option value="Machinga">Machinga</ion-select-option>
+              <ion-select-option value="Mangochi">Mangochi</ion-select-option>
+              <ion-select-option value="Mchinji">Mchinji</ion-select-option>
+              <ion-select-option value="Mulanje">Mulanje</ion-select-option>
+              <ion-select-option value="Mwanza">Mwanza</ion-select-option>
+              <ion-select-option value="Mzimba">Mzimba</ion-select-option>
+              <ion-select-option value="Nkhata Bay">Nkhata Bay</ion-select-option>
+              <ion-select-option value="Nkhotakota">Nkhotakota</ion-select-option>
+              <ion-select-option value="Nsanje">Nsanje</ion-select-option>
+              <ion-select-option value="Ntcheu">Ntcheu</ion-select-option>
+              <ion-select-option value="Nkhoma">Nkhoma</ion-select-option>
+              <ion-select-option value="Phalombe">Phalombe</ion-select-option>
+              <ion-select-option value="Rumphi">Rumphi</ion-select-option>
+              <ion-select-option value="Salima">Salima</ion-select-option>
+              <ion-select-option value="Thyolo">Thyolo</ion-select-option>
+              <ion-select-option value="Zomba">Zomba</ion-select-option>
+            </ion-select>
           </ion-item>
 
           <ion-item>
@@ -42,7 +70,7 @@
 <script lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
-import { IonButton, IonCheckbox, IonDatetime, IonInput, IonItem, IonLabel, IonModal } from '@ionic/vue';
+import { IonButton, IonCheckbox, IonDatetime, IonInput, IonItem, IonLabel, IonModal, IonSelect, IonSelectOption } from '@ionic/vue';
 
 export default {
   components: {
@@ -53,13 +81,15 @@ export default {
     IonItem,
     IonLabel,
     IonModal,
+    IonSelect,
+    IonSelectOption,
   },
   setup() {
     const modalOpen = ref(false);
     const isclub = ref(false);
     const club_name = ref('');
-    const district = ref('');
     const registered = ref();
+    const district = ref('');
 
     const openModal = () => {
       modalOpen.value = true;
@@ -85,10 +115,6 @@ export default {
       closeModal();
     };
 
-    const submitForm = async () => {
-      await saveGrower();
-    }
-
     return {
       modalOpen,
       isclub,
@@ -99,7 +125,6 @@ export default {
       closeModal,
       saveGrower,
       cancelModal,
-      submitForm,
     };
   }
 };
