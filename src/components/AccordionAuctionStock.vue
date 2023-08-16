@@ -4,7 +4,6 @@
         <ion-item slot="header" color="light">
           <ion-label>{{s.club_name}} Club - {{s.bales}} bales - {{s.weight}}KGs <small><date-format :date="s.consignment_date" has-time/></small></ion-label>
           <ion-badge slot="end">Live</ion-badge>
-          <ion-badge slot="end"><bid-form></bid-form></ion-badge>
         </ion-item>
         <div class="ion-padding" slot="content">
             
@@ -19,7 +18,6 @@
     import { defineComponent, ref } from 'vue';
     import axios, { Axios } from 'axios';
     import {useStore} from '@/Store/store.ts';
-    import  {BidForm} from '@/components/BidForm.vue';
   
     export default defineComponent({
       components: {
@@ -28,7 +26,6 @@
         IonItem,
         IonLabel,
         IonBadge,
-        BidForm,
       },
       setup() {
         const store = useStore();

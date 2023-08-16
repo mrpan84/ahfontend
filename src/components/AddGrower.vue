@@ -31,7 +31,7 @@
         </form>
 
         <div class="button-group">
-          <ion-button class="btn-save" @click="submitForm" color="success">Save</ion-button>
+          <ion-button class="btn-save" @click="saveGrower()" color="success">Save</ion-button>
           <ion-button class="btn-cancel" @click="cancelModal" color="danger">Cancel</ion-button>
         </div>
       </ion-content>

@@ -44,6 +44,7 @@
         }
 
         const goToSession = (id) => {
+          console.log(id)
           store.AUCTION_ID = id;
           store.ROUTER.push({ name: 'Session', replace: true });
         }
