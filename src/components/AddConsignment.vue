@@ -8,46 +8,37 @@
   </ion-header>
   <ion-content class="ion-padding">
     <ion-modal :is-open="isModalOpen" @ionModalDidDismiss="closeModal">
-
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button @click="cancel()" color="danger">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>New Consignment Form</ion-title>
+          <ion-buttons slot="end">
+            <ion-button :strong="true" @click="saveForm" color="success">Save</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
       <ion-content class="ion-padding">
-        <div class="modal-overlay" :class="{ 'open': isModalOpen }">
-          <div class="add-consignment-form-container">
-            <h2>Add Consignments Below:</h2>
-            <form>
-              <div class="form-group">
-                <SelectGrower />
-                    <ion-list>
-                      <ion-item>
-                        <ion-select>
-                            <div slot="label">Grower <ion-text color="danger">(Required)</ion-text></div>
-                            <ion-select-option v-for="grower in growers" :value="grower.grower_id">
-                                {{growers.district}} {{ grower.club_name }}</ion-select-option>
-                       </ion-select>
-                      </ion-item>
-                    </ion-list>
-              </div>
-
-              <div class="form-group">
-                <label for="consignment-date">Consignment Date:</label>
-                <ion-input type="date" id="consignment-date" v-model="consignmentDate" class="form-input"></ion-input>
-              </div>
-
-              <div class="form-group">
-                <label for="quality">Quality:</label>
-                <ion-input type="text" id="quality" v-model="quality" class="form-input"></ion-input>
-              </div>
-
-              <div class="form-group">
-                <label for="attempts">Attempts:</label>
-                <ion-input type="number" id="attempts" v-model="attempts" class="form-input"></ion-input>
-              </div>
-
-              <div class="button-group">
-                <ion-button class="btn-save" @click="saveForm">Save</ion-button>
-                <ion-button class="btn-cancel" @click="cancelForm">Cancel</ion-button>
-              </div>
-            </form>
-          </div>
+        <div class="form-container">
+          <h2>Add Consignments Below:</h2>
+          <form>
+            <div class="form-group">
+              <select-grower v-model="grower" />
+            </div>
+            <div class="form-group">
+              <label for="consignment-date">Consignment Date:</label>
+              <ion-input type="date" id="consignment-date" v-model="consignmentDate" class="form-input"></ion-input>
+            </div>
+            <div class="form-group">
+              <label for="quality">Quality:</label>
+              <ion-input type="text" id="quality" v-model="quality" class="form-input"></ion-input>
+            </div>
+            <div class="form-group">
+              <label for="attempts">Attempts:</label>
+              <ion-input type="number" id="attempts" v-model="attempts" class="form-input"></ion-input>
+            </div>
+          </form>
         </div>
       </ion-content>
     </ion-modal>
@@ -55,10 +46,21 @@
 </template>
 
 <script lang="ts">
-import { IonButton, IonModal, IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonInput } from '@ionic/vue';
+import {
+  IonButton,
+  IonModal,
+  IonHeader,
+  IonContent,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonInput,
+  IonLabel,
+} from '@ionic/vue';
 import { defineComponent } from 'vue';
 import SelectGrower from './SelectGrower.vue';
-import {useStore} from '@/Store/store.ts';
+import axios from 'axios';
+import { useStore } from '@/Store/store.ts';
 
 export default defineComponent({
   components: {
@@ -70,6 +72,7 @@ export default defineComponent({
     IonTitle,
     IonButtons,
     IonInput,
+    IonLabel,
     SelectGrower,
   },
   data() {
@@ -88,25 +91,17 @@ export default defineComponent({
     cancel() {
       this.isModalOpen = false;
     },
-    confirm() {
-      const name = this.quality;
+    saveForm() {
+      const store = useStore();
+      const url = store.BASE_URL + 'consignment/addconsignment/';
+      const payload = {
+        consignment_date: this.consignmentDate,
+        quality: this.quality,
+        attempts: this.attempts,
+        grower: this.grower,
+      };
+      const response = axios.post(url, payload).then((response) => console.log(response));
       this.isModalOpen = false;
-      // Emit the confirm event or perform any necessary actions
-    },
-      saveAuction() {
-        const store = useStore();
-        const url = store.BASE_URL + "auction/createauction/";
-        const payload = {
-            "consignment_date": this.consignmentDate,
-            "quality": this.quality,
-            "attempts": this.attempts,
-            "grower": this.grower
-        };
-        const response = axios.post(url, payload)
-            .then((response) => console.log(response))
-      },
-    cancelForm() {
-      this.cancel();
     },
     closeModal() {
       // Handle modal closed event
@@ -114,6 +109,7 @@ export default defineComponent({
   },
 });
 </script>
+
 
 <style scoped>
 .button-container {
