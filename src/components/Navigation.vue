@@ -2,7 +2,8 @@
   <ion-menu content-id="main-content" type="overlay">
     <ion-content>
       <ion-list id="inbox-list">
-        <ion-list-header>  {{ store.USERTYPE }}</ion-list-header>
+        <ion-list-header v-if="store.USERTYPE == 'Buyer'">  {{ store.USER.company }}</ion-list-header>
+        <ion-list-header v-if="store.USERTYPE != 'Buyer'">  {{ store.USERTYPE }}</ion-list-header>
         <ion-note>Hello {{ store.USER.fname }} {{ store.USER.sname }}  </ion-note>
 
         <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">

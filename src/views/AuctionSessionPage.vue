@@ -5,7 +5,9 @@
         <ion-buttons slot="start">
           <ion-menu-button color="primary"></ion-menu-button>
         </ion-buttons>
-        <ion-title>Live - {{store.LIVE_SESSION.venue}} Auction Sessions </ion-title>
+        <BreadCrumbsSessions></BreadCrumbsSessions>
+        <ion-title>Live - {{store.LIVE_SESSION.venue}} Auction</ion-title>
+
       </ion-toolbar>
     </ion-header>
 
@@ -26,6 +28,7 @@
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import AccordionAuctionStock from "@/components/AccordionAuctionStock.vue";
+import BreadCrumbsSessions from "@/components/BreadCrumbsSessions.vue";
 import { defineComponent, ref } from 'vue';
 import axios, { Axios } from 'axios';
 import Navigation from '@/components/Navigation.vue';

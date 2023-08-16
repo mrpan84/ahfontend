@@ -21,7 +21,7 @@
           </div>
 
           <div class="button-group">
-            <button class="btn-bid" @click="placeBid">Bid</button>
+            <button class="btn-bid" @click="placeBid()">Bid</button>
             <button class="btn-cancel" @click="cancelModal">Cancel</button>
           </div>
         </form>
@@ -33,14 +33,16 @@
 <script>
 import { ref } from 'vue';
 import {useStore} from '@/Store/store.ts';
+import axios, { Axios } from 'axios';
 
 export default {
-  setup() {
+  setup(props) {
     const store = useStore();
     const modalOpen = ref(false);
-    const buyerId = ref('');
-    const auctionStockId = ref('');
+    const buyerId = store.USER.user_id;
+    const auctionStockId = props.auction_stock_id;
     const amount = ref(null);
+    console.log(props);
 
     const openModal = () => {
       modalOpen.value = true;
@@ -50,12 +52,21 @@ export default {
       modalOpen.value = false;
       // Clear form fields
       buyerId.value = '';
-      auctionStockId.value = '';
+      auctionStockId.value = null;
       amount.value = null;
     };
 
     const placeBid = () => {
-      // TODO: Handle form submission logic
+      const url = "http://127.0.0.1:8000/api/v1/auction/placebid/";
+      const payload = {
+        "buyerId": buyerId.value,
+        "auctionStockId": auctionStockId.value,
+        "amount": amount.value,
+        "bid_time": new Date()
+      };
+      console.log(payload);
+      const response = axios.post(url, payload)
+          .then((response) => console.log(response))
       console.log('Bid placed!');
     };
 
@@ -82,7 +93,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height:30vh;
 }
 
 .open-modal-btn {

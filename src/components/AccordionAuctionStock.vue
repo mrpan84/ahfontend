@@ -6,7 +6,7 @@
           <ion-badge slot="end">Live</ion-badge>
         </ion-item>
         <div class="ion-padding" slot="content">
-            
+          <BidForm :auction_stock_id="s.auction_stock_id"></BidForm>
         </div>
       </ion-accordion>
     </ion-accordion-group>
@@ -18,6 +18,7 @@
     import { defineComponent, ref } from 'vue';
     import axios, { Axios } from 'axios';
     import {useStore} from '@/Store/store.ts';
+    import BidForm from "@/components/BidForm.vue";
   
     export default defineComponent({
       components: {
@@ -26,6 +27,7 @@
         IonItem,
         IonLabel,
         IonBadge,
+        BidForm,
       },
       setup() {
         const store = useStore();

@@ -5,12 +5,18 @@ export const useStore = defineStore({
     state: () => ({
         BASE_URL: 'http://localhost:8000/api/v1/',
         USERTYPE: 'Guest',
-        USER: "",
+        USER: {user_id: null, fname: null, sname: null, phone: null, utype: null},
         GROWERS: null,
         PAGES: null,
         ROUTER: null,
-        AUCTION_ID: null,
-        LIVE_SESSION: null,
+        AUCTION_ID: 4,
+        LIVE_SESSION: {
+            "auction_id": 4,
+            "created_date": "2023-06-21T17:09:30Z",
+            "start_time": "2023-06-23T13:30:00Z",
+            "end_time": "2023-08-23T17:00:00Z",
+            "venue": "Mzuzu"
+        },
     }),
     getter: {
         getBaseUrl: (state) => state.BASE_URL,
