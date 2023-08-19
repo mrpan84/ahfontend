@@ -17,7 +17,7 @@ export const useStore = defineStore({
             "end_time": "2023-08-23T17:00:00Z",
             "venue": "Mzuzu"
         },
-
+        AUCTION_STOCK_ID: null,
     }),
     getter: {
         getBaseUrl: (state) => state.BASE_URL,
@@ -28,6 +28,7 @@ export const useStore = defineStore({
         getRouter: (state) => state.ROUTER,
         getAuctionId: (state) => state.AUCTION_ID,
         getLiveSession: (state) => state.LIVE_SESSION,
+        getAuctionStockId: (state) => state.AUCTION_STOCK_ID,
     },
     actions: {
         setBaseUrl(url:string){
@@ -53,6 +54,9 @@ export const useStore = defineStore({
         },
         setLiveSession(live_session: any){
             this.LIVE_SESSION = live_session
-        }
+        },
+        setAuctionStockId(auction_stock_id: any){
+            this.AUCTION_STOCK_ID = auction_stock_id
+        },
     }
 });

@@ -51,6 +51,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import ('../views/AuctionSessionPage.vue')
   },
   {
+    path: '/folder/stockbids',
+    name: 'StockBids',
+    component: () => import ('../views/AuctionStockBiddingPage.vue')
+  },
+  {
     path: '/folder/bale',
     name: 'Bale',
     component: () => import ('../views/BalesPage.vue')

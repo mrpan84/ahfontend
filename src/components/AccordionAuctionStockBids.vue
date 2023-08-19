@@ -6,9 +6,8 @@
           <ion-badge slot="end">Live</ion-badge>
         </ion-item>
         <div class="ion-padding" slot="content">
-          <chip-stock-bid :auction_stock_id="s.auction_stock_id" ></chip-stock-bid>
           <BidForm :auction_stock_id="s.auction_stock_id"></BidForm>
-
+          <chip-stock-bid :auction_stock_id="1" :bid_id="1" :amount="1"></chip-stock-bid>
         </div>
       </ion-accordion>
     </ion-accordion-group>

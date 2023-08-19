@@ -69,7 +69,9 @@ export default {
           .then((response) => console.log(response))
 
       store.AUCTION_ID = 4;
-      store.ROUTER.push({ name: 'Session', replace: true });
+      store.AUCTION_STOCK_ID = auctionStockId.value;
+      store.ROUTER.push({ name: 'StockBids', replace: true });
+      closeModal();
     };
 
 
