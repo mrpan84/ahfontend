@@ -32,10 +32,11 @@ export default defineComponent({
     const loadBids = async () => {
       const response = await axios.get(store.BASE_URL + "auction/bids_by_stock_id/" + props.auction_stock_id + "/");
       bids.value = response.data;
+      console.log("a call");
     }
 
     //loadBids()
-    setTimeout(loadBids, 5000);
+    setInterval(loadBids, 5000);
 
 
     return {

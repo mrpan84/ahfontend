@@ -7,7 +7,7 @@
         </ion-item>
         <div class="ion-padding" slot="content">
           <chip-stock-bid :auction_stock_id="s.auction_stock_id" ></chip-stock-bid>
-          <BidForm :auction_stock_id="s.auction_stock_id"></BidForm>
+          <BidForm v-if="store.USERTYPE == 'Buyer'" :auction_stock_id="s.auction_stock_id" ></BidForm>
 
         </div>
       </ion-accordion>
@@ -43,7 +43,7 @@
         }
 
         loadStock()
-        return { caretDownCircle, stock };
+        return { caretDownCircle, stock, store };
       },
     });
   </script>
