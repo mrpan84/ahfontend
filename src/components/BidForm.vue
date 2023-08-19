@@ -3,20 +3,20 @@
     <button class="open-modal-btn" @click="openModal">Place Bid</button>
     <div class="modal-overlay" :class="{ 'open': modalOpen }">
       <div class="bids-modal">
-        <h2>Bids Form</h2>
+        <h2>Place a bid</h2>
         <form>
           <div class="form-group">
-            <label for="buyer-id">Buyer ID:</label>
-            <input type="text" id="buyer-id" v-model="buyerRep" class="form-input" disabled/>
+            <label for="buyer-id">Buyer ID: {{buyerRep}}</label>
+            <input type="hidden" id="buyer-id" v-model="buyerRep" class="form-input" disabled/>
           </div>
 
           <div class="form-group">
-            <label for="auction-stock-id">Auction Stock ID:</label>
-            <input type="text" id="auction-stock-id" v-model="auctionStockId" class="form-input" disabled/>
+            <label for="auction-stock-id">Auction Stock ID: {{auctionStockId}}</label>
+            <input type="hidden" id="auction-stock-id" v-model="auctionStockId" class="form-input"/>
           </div>
 
           <div class="form-group">
-            <label for="amount">Amount:</label>
+            <label for="amount">Amount: </label>
             <input type="number" id="amount" v-model="amount" class="form-input" />
           </div>
 
@@ -59,17 +59,17 @@ export default {
     const placeBid = () => {
       const url = "http://127.0.0.1:8000/api/v1/auction/placebid/";
       const now = new Date()
-      console.log(now)
       const payload = {
-        "bid_time": null,
+        "bid_time": now,
         "amount": amount.value,
-        "buyer_rep": buyerRep.value,
+        "buyer_rep": store.USER.user_id,
         "auction_stock": auctionStockId.value
       };
-      console.log(payload);
-      // const response = axios.post(url, payload)
-      //     .then((response) => console.log(response))
-      // console.log('Bid placed!');
+      const response = axios.post(url, payload)
+          .then((response) => console.log(response))
+
+      store.AUCTION_ID = 4;
+      store.ROUTER.push({ name: 'Session', replace: true });
     };
 
 

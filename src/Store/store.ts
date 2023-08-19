@@ -17,6 +17,7 @@ export const useStore = defineStore({
             "end_time": "2023-08-23T17:00:00Z",
             "venue": "Mzuzu"
         },
+
     }),
     getter: {
         getBaseUrl: (state) => state.BASE_URL,
