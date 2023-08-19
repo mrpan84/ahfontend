@@ -7,12 +7,12 @@
         <form>
           <div class="form-group">
             <label for="buyer-id">Buyer ID:</label>
-            <input type="text" id="buyer-id" v-model="buyerId" class="form-input" />
+            <input type="text" id="buyer-id" v-model="buyerRep" class="form-input" disabled/>
           </div>
 
           <div class="form-group">
             <label for="auction-stock-id">Auction Stock ID:</label>
-            <input type="text" id="auction-stock-id" v-model="auctionStockId" class="form-input" />
+            <input type="text" id="auction-stock-id" v-model="auctionStockId" class="form-input" disabled/>
           </div>
 
           <div class="form-group">
@@ -21,7 +21,7 @@
           </div>
 
           <div class="button-group">
-            <button class="btn-bid" @click="placeBid()">Bid</button>
+            <button class="btn-bid" @click="placeBid">Bid</button>
             <button class="btn-cancel" @click="cancelModal">Cancel</button>
           </div>
         </form>
@@ -36,11 +36,14 @@ import {useStore} from '@/Store/store.ts';
 import axios, { Axios } from 'axios';
 
 export default {
+  props: {
+    auction_stock_id: Number,
+  },
   setup(props) {
     const store = useStore();
     const modalOpen = ref(false);
-    const buyerId = store.USER.user_id;
-    const auctionStockId = props.auction_stock_id;
+    const buyerRep = store.USER.user_id;
+    const auctionStockId = ref(props.auction_stock_id);
     const amount = ref(null);
     console.log(props);
 
@@ -50,25 +53,25 @@ export default {
 
     const closeModal = () => {
       modalOpen.value = false;
-      // Clear form fields
-      buyerId.value = '';
-      auctionStockId.value = null;
       amount.value = null;
     };
 
     const placeBid = () => {
       const url = "http://127.0.0.1:8000/api/v1/auction/placebid/";
+      const now = new Date()
+      console.log(now)
       const payload = {
-        "buyerId": buyerId.value,
-        "auctionStockId": auctionStockId.value,
+        "bid_time": null,
         "amount": amount.value,
-        "bid_time": new Date()
+        "buyer_rep": buyerRep.value,
+        "auction_stock": auctionStockId.value
       };
       console.log(payload);
-      const response = axios.post(url, payload)
-          .then((response) => console.log(response))
-      console.log('Bid placed!');
+      // const response = axios.post(url, payload)
+      //     .then((response) => console.log(response))
+      // console.log('Bid placed!');
     };
+
 
     const cancelModal = () => {
       closeModal();
@@ -76,7 +79,7 @@ export default {
 
     return {
       modalOpen,
-      buyerId,
+      buyerRep,
       auctionStockId,
       amount,
       openModal,

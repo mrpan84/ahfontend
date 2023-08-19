@@ -34,7 +34,7 @@
         const stock = ref();
 
         const loadStock = async () => {
-        const response = await axios.get(store.BASE_URL + "auction/auctionstocks_by_auction_id/" + store.AUCTION_ID);
+        const response = await axios.get(store.BASE_URL + "auction/auctionstocks_by_auction_id/" + store.AUCTION_ID + "/");
         stock.value = response.data;
         }
 
