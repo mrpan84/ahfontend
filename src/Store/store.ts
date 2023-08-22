@@ -58,5 +58,8 @@ export const useStore = defineStore({
         setAuctionStockId(auction_stock_id: any){
             this.AUCTION_STOCK_ID = auction_stock_id
         },
-    }
+    },
+    persist: {
+        storage: sessionStorage, // data in sessionStorage is cleared when the page session ends.
+    },
 });
