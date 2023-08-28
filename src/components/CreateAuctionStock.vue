@@ -5,18 +5,22 @@
       <div class="stock-modal">
         <h2>New Stock</h2>
         <form>
-          <div class="form-group">
-            <label for="Registration Number">Registration Number: </label>
-            <input type="number" id="number" v-model="number" class="form-input" />
 
-          </div>
           <div class="form-group">
-            <label for="Auction">Auction: </label>
+            <label for="Auction">Auction: {{ store.AUCTION_ID }} </label>
             <input type="hidden" id="auction" v-model="auction" class="form-input" disabled/>
           </div>
-          
+
+          <div class="form-group">
+            <ion-select label="Stock" label-placement="Stock" v-model="reg_number">
+              <ion-select-option v-for="consignment in consignments" :value="consignment.reg_number">
+                {{consignment.grower}} {{ consignment.reg_number }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+
           <div class="button-group">
-            <button class="btn-bid" @click="Save">Save</button>
+            <button class="btn-bid" @click="save">Save</button>
             <button class="btn-cancel" @click="cancelModal">Cancel</button>
           </div>
         </form>
@@ -26,17 +30,19 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import {useStore} from '@/Store/store.ts';
-import axios, { Axios } from 'axios';
+import { ref, onMounted } from 'vue';
+import { useStore } from '@/Store/store.ts';
+import axios from 'axios';
 
 export default {
   props: {
-    auction_stock_id: Number,
+    auction_id: Number,
   },
   setup(props) {
     const store = useStore();
     const modalOpen = ref(false);
+    const reg_number = ref(0);
+    const auction = ref(store.AUCTION_ID);
 
     const openModal = () => {
       modalOpen.value = true;
@@ -44,29 +50,67 @@ export default {
 
     const closeModal = () => {
       modalOpen.value = false;
-      amount.value = null;
     };
 
-    const Save = () => {
-      const url = "http://127.0.0.1:8000/api/v1/stock/consignments/";
-  
-
+    const save = async () => {
+      const url = "http://127.0.0.1:8000/api/v1/auction/createauctionstock/";
+      const payload = {
+        "reg_number": reg_number.value,
+        "auction": auction.value,
+      };
+      console.log(payload);
+      try {
+        const response = await axios.post(url, payload);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
       closeModal();
     };
-
 
     const cancelModal = () => {
       closeModal();
     };
 
+    const consignments = ref([]);
+    const auctions = ref([]);
+
+    const loadConsignments = async () => {
+      try {
+        const response = await axios.get(store.BASE_URL + "stock/growerconsignmentsunscheduled/");
+        consignments.value = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const loadAuctions = async () => {
+      try {
+        const response = await axios.get(store.BASE_URL + "auction/auctions/");
+        auctions.value = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    onMounted(() => {
+      loadConsignments();
+      loadAuctions();
+    });
+
     return {
       modalOpen,
       openModal,
       closeModal,
-      Save,
-      cancelModal
+      save,
+      cancelModal,
+      reg_number,
+      auction,
+      consignments,
+      auctions,
+      store,
     };
-  }
+  },
 };
 </script>
 
@@ -75,7 +119,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height:30vh;
+  height:15vh;
 }
 
 .open-modal-btn {

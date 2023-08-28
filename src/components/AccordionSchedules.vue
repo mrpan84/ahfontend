@@ -7,9 +7,14 @@
           <ion-badge v-if="+(new Date(schedule.start_time).getTime()) < Date.now() && +(new Date(schedule.end_time).getTime()) > Date.now()" slot="end" color="danger">Live</ion-badge>
         </ion-item>
         <div class="ion-padding" slot="content">
+          <!--CreateAuctionStock></CreateAuctionStock-->
           <ion-button v-if="+(new Date(schedule.start_time).getTime()) < Date.now() && +(new Date(schedule.end_time).getTime()) > Date.now()" @click="goToSession(schedule.auction_id)">
             Join Live Session
             <ion-icon slot="end" :icon="hammerSharp"></ion-icon>
+          </ion-button>
+          <ion-button v-else-if="+(new Date(schedule.start_time).getTime()) > Date.now() && store.USERTYPE == 'Auctioneer'" @click="goToEditSession(schedule.auction_id)">
+            View Session Stock
+            <ion-icon slot="end" :icon="eyeOutline"></ion-icon>
           </ion-button>
         </div>
       </ion-accordion>
@@ -18,13 +23,15 @@
   
   <script lang="ts">
     import { IonAccordion, IonAccordionGroup, IonItem, IonLabel, IonBadge, IonButton, IonIcon } from '@ionic/vue';
-    import { caretDownCircle, hammerSharp } from 'ionicons/icons';
+    import { caretDownCircle, hammerSharp, eyeOutline } from 'ionicons/icons';
     import { defineComponent, ref } from 'vue';
     import axios, { Axios } from 'axios';
     import {useStore} from '@/Store/store.ts';
     import { useRouter } from 'vue-router';
+    import CreateAuctionStock from '@/components/CreateAuctionStock.vue';
   
     export default defineComponent({
+      name: 'CreateAuctionStock',
       components: {
         IonAccordion,
         IonAccordionGroup,
@@ -33,8 +40,13 @@
         IonBadge,
         IonButton,
         IonIcon,
+        CreateAuctionStock,
       },
-      setup() {
+      props:{
+        auction_id: null,
+      },
+      setup(props) {
+
         const store = useStore();
         const schedules = ref();
 
@@ -49,8 +61,14 @@
           store.ROUTER.push({ name: 'Session', replace: true });
         }
 
+        const goToEditSession = (id) => {
+          console.log(id)
+          store.AUCTION_ID = id;
+          store.ROUTER.push({ name: 'Schedule', replace: true });
+        }
+
         loadSchedules()
-        return { caretDownCircle, schedules, hammerSharp, goToSession };
+        return { caretDownCircle, schedules, hammerSharp, eyeOutline, goToSession, goToEditSession, store };
       },
     });
   </script>
