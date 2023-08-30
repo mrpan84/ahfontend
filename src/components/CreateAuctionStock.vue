@@ -5,20 +5,17 @@
       <div class="stock-modal">
         <h2>New Stock</h2>
         <form>
-
           <div class="form-group">
-            <label for="Auction">Auction: {{ store.AUCTION_ID }} </label>
-            <input type="hidden" id="auction" v-model="auction" class="form-input" disabled/>
+            <label>Auction: </label>
+            <input type="hidden" id="auction" :value="auction" class="form-input" disabled/>
           </div>
-
           <div class="form-group">
             <ion-select label="Stock" label-placement="Stock" v-model="reg_number">
-              <ion-select-option v-for="consignment in consignments" :value="consignment.reg_number">
-                {{consignment.grower}} {{ consignment.reg_number }}
+              <ion-select-option v-for="consignment in consignments" :value="consignment.reg_number" :key="consignment.reg_number">
+                Reg Number: {{ consignment.reg_number }}
               </ion-select-option>
             </ion-select>
           </div>
-
           <div class="button-group">
             <button class="btn-bid" @click="save">Save</button>
             <button class="btn-cancel" @click="cancelModal">Cancel</button>
@@ -33,16 +30,20 @@
 import { ref, onMounted } from 'vue';
 import { useStore } from '@/Store/store.ts';
 import axios from 'axios';
+import { IonItem, IonList, IonSelect, IonSelectOption } from '@ionic/vue';
 
 export default {
   props: {
     auction_id: Number,
   },
+  components: { IonItem, IonList, IonSelect, IonSelectOption },
+
   setup(props) {
-    const store = useStore();
     const modalOpen = ref(false);
     const reg_number = ref(0);
-    const auction = ref(store.AUCTION_ID);
+    const auction = ref();
+    const consignments = ref([]);
+    const store = useStore();
 
     const openModal = () => {
       modalOpen.value = true;
@@ -72,47 +73,45 @@ export default {
       closeModal();
     };
 
-    const consignments = ref([]);
-    const auctions = ref([]);
 
-    const loadConsignments = async () => {
+    async function loadConsignments() {
       try {
         const response = await axios.get(store.BASE_URL + "stock/growerconsignmentsunscheduled/");
         consignments.value = response.data;
       } catch (error) {
         console.error(error);
       }
-    };
+    }
 
-    const loadAuctions = async () => {
+    async function loadAuctions() {
       try {
         const response = await axios.get(store.BASE_URL + "auction/auctions/");
-        auctions.value = response.data;
+        // handle response and assignments
       } catch (error) {
         console.error(error);
       }
-    };
+    }
 
     onMounted(() => {
+      auction.value = store.AUCTION_ID;
       loadConsignments();
       loadAuctions();
     });
 
     return {
       modalOpen,
+      reg_number,
+      auction,
+      consignments,
       openModal,
       closeModal,
       save,
       cancelModal,
-      reg_number,
-      auction,
-      consignments,
-      auctions,
-      store,
     };
   },
 };
 </script>
+
 
 <style scoped>
 .main-container {

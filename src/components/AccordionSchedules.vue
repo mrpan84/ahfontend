@@ -63,7 +63,9 @@
 
         const goToEditSession = (id) => {
           console.log(id)
-          store.AUCTION_ID = id;
+          store.setAuctionId(id);
+          //store.AUCTION_ID = id;
+          console.log(store.AUCTION_ID)
           store.ROUTER.push({ name: 'Schedule', replace: true });
         }
 
