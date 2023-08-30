@@ -134,7 +134,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(128, 128, 128, 0.7);
   display: none;
   justify-content: center;
   align-items: center;
@@ -149,7 +149,7 @@ export default {
   background-color: #f4f4f4;
   border-radius: 10px;
   padding: 20px;
-  max-width: 400px;
+  max-width: 200px;
 }
 
 h2 {
@@ -172,7 +172,7 @@ label {
 }
 
 .form-input {
-  width: 100%;
+  width:50%;
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
