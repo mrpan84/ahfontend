@@ -36,6 +36,15 @@
             <label for="showPasswordCheckbox" class="checkbox-label">Show Password</label>
           </div>
         </div>
+        <div class="security-question">
+          <p class="security-question-text">Security Question:</p>
+          <p class="security-question-subtext">What is your mother's maiden name?</p>
+          <ion-input
+            placeholder="Answer"
+            v-model="securityAnswer"
+            class="input-field"
+          ></ion-input>
+        </div>
         <ion-button expand="block" @click="register" class="register-button">Register</ion-button>
         <div class="login-link">
           <router-link class="login" to="/folder/signin">Already have an account? Login</router-link>
@@ -67,8 +76,9 @@ export default defineComponent({
     const fullName = ref('');
     const email = ref('');
     const password = ref('');
-    const userType = ref(''); // To store the selected user type
+    const userType = ref('');
     const showPassword = ref(false);
+    const securityAnswer = ref('');
 
     const toggleShowPassword = () => {
       showPassword.value = !showPassword.value;
@@ -78,52 +88,59 @@ export default defineComponent({
       console.log('Register');
     };
 
-    // Optional interface options for the ion-select
     const selectOptions = {
       header: 'Select User Type',
     };
 
-    return { register, fullName, email, password, userType, showPassword, toggleShowPassword, personAddOutline, eyeOutline, eyeOffOutline, selectOptions };
+    return {
+      register,
+      fullName,
+      email,
+      password,
+      userType,
+      showPassword,
+      securityAnswer,
+      toggleShowPassword,
+      personAddOutline,
+      eyeOutline,
+      eyeOffOutline,
+      selectOptions,
+    };
   },
 });
 </script>
 
 <style scoped>
-  /* The background color for the whole content area */
   .registration-content {
     --background: linear-gradient(to bottom right, #4F80E1, #00C9FF);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
   }
-
-  /* Container for the registration form */
   .registration-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100%;
     font-family: sans-serif;
-    color: #fff; /* Default text color for the form */
   }
-
-  /* Icon style */
   .registration-icon {
     font-size: 80px;
-    color: #fff;
+    color: #a3cc0d;
     margin-top: 64px;
   }
-
-  /* Title style */
   .registration-title {
     margin-top: 32px;
     font-size: 28px;
     font-weight: bold;
+    color: #fff;
   }
-
-  /* Input fields style */
-  .input-field,
-  ion-input.input-field {
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .input-field {
     width: 300px;
     padding: 12px;
     border-radius: 8px;
@@ -132,25 +149,36 @@ export default defineComponent({
     font-size: 16px;
     margin-bottom: 16px;
   }
-
-  /* ion-select style */
-  .input-field .select-text {
-    width: 100%;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #000;
-    font-size: 16px;
-    margin-bottom: 16px;
-  }
-
-  /* Show password checkbox style */
   .show-password-checkbox {
     display: flex;
     align-items: center;
     margin-top: 8px;
   }
-
-  /* Register button style */
+  .checkbox-input {
+    margin-right: 8px;
+  }
+  .checkbox-label {
+    color: #fff;
+    font-size: 14px;
+  }
+  .security-question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    width: 100%; /* Make sure the section takes full width */
+  }
+  .security-question-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .security-question-subtext {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 16px;
+  }
   .register-button {
     margin-top: 32px;
     width: 300px;
@@ -159,23 +187,18 @@ export default defineComponent({
     font-size: 16px;
     font-weight: bold;
   }
-
-  /* Login link style */
   .login-link {
     margin-top: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   .login {
     color: #fff;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
   }
-
-  /* Hover style for login link */
   .login:hover {
     text-decoration: underline;
   }
