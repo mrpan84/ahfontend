@@ -76,12 +76,6 @@ const auctioneerPages = [
       mdIcon: calendarSharp,
     },
     {
-      title: 'Live Auction Session',
-      url: '/folder/sessions',
-      iosIcon: hammerOutline,
-      mdIcon: hammerSharp,
-    },
-    {
       title: 'Grower Clubs',
       url: '/folder/growerclubs',
       iosIcon: peopleOutline,
@@ -93,20 +87,8 @@ const auctioneerPages = [
       iosIcon: cameraOutline,
       mdIcon: cameraSharp,
     },
-    {
-      title: 'Settings',
-      url: '/folder/settings',
-      iosIcon: settingsOutline,
-      mdIcon: settingsSharp,
-    },
   ];
-  const buyerPages = [
-   {
-      title: 'View Auction',
-      url: '/folder/view',
-      iosIcon: calendarOutline,
-      mdIcon: calendarSharp,
-    }, 
+  const buyerPages = [ 
   {
       title: 'Auction Schedules',
       url: '/folder/schedules',
@@ -118,36 +100,6 @@ const auctioneerPages = [
     url: '/folder/sessions',
     iosIcon: readerOutline,
     mdIcon: readerSharp,
-    },
-    {
-      title: 'Purchases',
-      url: '/folder/purchases',
-      iosIcon: receiptOutline,
-      mdIcon: receiptSharp,
-    },
-    {
-    title: 'Reverse Bid',
-    url: '/folder/reversals',
-    iosIcon: infiniteOutline,
-    mdIcon: infiniteSharp,
-    },
-    {
-      title: 'Launch Complaint',
-      url: '/folder/complaints',
-      iosIcon: alertCircleOutline,
-      mdIcon: alertCircleSharp,
-    },
-    {
-      title: 'Payments',
-      url: '/folder/payments',
-      iosIcon: cardOutline,
-      mdIcon: cardSharp,
-    },
-    {
-      title: 'Settings',
-      url: '/folder/settings',
-      iosIcon: settingsOutline,
-      mdIcon: settingsSharp,
     },
   ];
   const farmerPages = [
@@ -181,18 +133,7 @@ const auctioneerPages = [
       iosIcon: giftOutline,
       mdIcon: giftSharp,
     },
-    {
-      title: 'My Stock',
-      url: '/folder/consignment/:id',
-      iosIcon: bagHandleOutline,
-      mdIcon: bagHandleSharp,
-    },
-    {
-      title: 'History',
-      url: '/folder/history',
-      iosIcon: timeOutline,
-      mdIcon: timeSharp,
-    },
+
   ];
   const adminPages = [
     {

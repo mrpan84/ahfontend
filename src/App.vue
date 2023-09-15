@@ -247,4 +247,3 @@ ion-item.selected {
   align-items: center;
 }
 </style>
-`
