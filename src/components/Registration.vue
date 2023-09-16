@@ -36,15 +36,6 @@
             <label for="showPasswordCheckbox" class="checkbox-label">Show Password</label>
           </div>
         </div>
-        <div class="security-question">
-          <p class="security-question-text">Security Question:</p>
-          <p class="security-question-subtext">What is your mother's maiden name?</p>
-          <ion-input
-            placeholder="Answer"
-            v-model="securityAnswer"
-            class="input-field"
-          ></ion-input>
-        </div>
         <ion-button expand="block" @click="register" class="register-button">Register</ion-button>
         <div class="login-link">
           <router-link class="login" to="/folder/signin">Already have an account? Login</router-link>
@@ -76,9 +67,8 @@ export default defineComponent({
     const fullName = ref('');
     const email = ref('');
     const password = ref('');
-    const userType = ref('');
+    const userType = ref(''); // To store the selected user type
     const showPassword = ref(false);
-    const securityAnswer = ref('');
 
     const toggleShowPassword = () => {
       showPassword.value = !showPassword.value;
@@ -88,103 +78,88 @@ export default defineComponent({
       console.log('Register');
     };
 
+    // Optional interface options for the ion-select
     const selectOptions = {
       header: 'Select User Type',
     };
 
-    return {
-      register,
-      fullName,
-      email,
-      password,
-      userType,
-      showPassword,
-      securityAnswer,
-      toggleShowPassword,
-      personAddOutline,
-      eyeOutline,
-      eyeOffOutline,
-      selectOptions,
-    };
+    return { register, fullName, email, password, userType, showPassword, toggleShowPassword, personAddOutline, eyeOutline, eyeOffOutline, selectOptions };
   },
 });
 </script>
 
 <style scoped>
   .registration-content {
-    background-color: #f5f5f5;
+    --background: linear-gradient(to bottom right, #4F80E1, #00C9FF);
   }
   .registration-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: sans-serif;
   }
   .registration-icon {
-    font-size: 64px;
-    color: #4F80E1;
-    margin-bottom: 16px;
+    font-size: 80px;
+    color: #fff;
+    margin-top: 64px;
   }
   .registration-title {
-    font-size: 24px;
+    margin-top: 32px;
+    font-size: 28px;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 24px;
+    color: #fff;
   }
   .input-container {
-    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
   }
   .input-field {
-    width: 100%;
+    width: 300px;
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
     font-size: 16px;
     margin-bottom: 16px;
   }
   .show-password-checkbox {
     display: flex;
     align-items: center;
+    margin-top: 8px;
   }
   .checkbox-input {
     margin-right: 8px;
   }
   .checkbox-label {
+    color: #fff;
     font-size: 14px;
-    color: #777;
-  }
-  .security-question {
-    margin-bottom: 24px;
-  }
-  .security-question-text {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
-  }
-  .security-question-subtext {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 16px;
   }
   .register-button {
-    background-color: #4F80E1;
-    color: #fff;
+    margin-top: 32px;
+    width: 300px;
+    --background: #fff;
+    --color: #4F80E1;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 6px;
-    padding: 12px 20px;
-    margin-bottom: 16px;
   }
   .login-link {
-    font-size: 14px;
-    color: #666;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .login-link a {
-    color: #4F80E1;
+  .login {
+    color: #fff;
     text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .login:hover {
+    text-decoration: underline;
   }
 </style>

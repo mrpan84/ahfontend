@@ -36,15 +36,6 @@
             <label for="showPasswordCheckbox" class="checkbox-label">Show Password</label>
           </div>
         </div>
-        <div class="security-question">
-          <p class="security-question-text">Security Question:</p>
-          <p class="security-question-subtext">What is your mother's maiden name?</p>
-          <ion-input
-            placeholder="Answer"
-            v-model="securityAnswer"
-            class="input-field"
-          ></ion-input>
-        </div>
         <ion-button expand="block" @click="register" class="register-button">Register</ion-button>
         <div class="login-link">
           <router-link class="login" to="/folder/signin">Already have an account? Login</router-link>
@@ -76,9 +67,8 @@ export default defineComponent({
     const fullName = ref('');
     const email = ref('');
     const password = ref('');
-    const userType = ref('');
+    const userType = ref(''); // To store the selected user type
     const showPassword = ref(false);
-    const securityAnswer = ref('');
 
     const toggleShowPassword = () => {
       showPassword.value = !showPassword.value;
@@ -88,24 +78,12 @@ export default defineComponent({
       console.log('Register');
     };
 
+    // Optional interface options for the ion-select
     const selectOptions = {
       header: 'Select User Type',
     };
 
-    return {
-      register,
-      fullName,
-      email,
-      password,
-      userType,
-      showPassword,
-      securityAnswer,
-      toggleShowPassword,
-      personAddOutline,
-      eyeOutline,
-      eyeOffOutline,
-      selectOptions,
-    };
+    return { register, fullName, email, password, userType, showPassword, toggleShowPassword, personAddOutline, eyeOutline, eyeOffOutline, selectOptions };
   },
 });
 </script>
@@ -124,7 +102,7 @@ export default defineComponent({
   }
   .registration-icon {
     font-size: 80px;
-    color: #a3cc0d;
+    color: #fff;
     margin-top: 64px;
   }
   .registration-title {
@@ -160,24 +138,6 @@ export default defineComponent({
   .checkbox-label {
     color: #fff;
     font-size: 14px;
-  }
-  .security-question {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 32px;
-    width: 100%; /* Make sure the section takes full width */
-  }
-  .security-question-text {
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-  .security-question-subtext {
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 16px;
   }
   .register-button {
     margin-top: 32px;
